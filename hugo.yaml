@@ -1,0 +1,18 @@
+baseURL: "https://alejero.studio/"
+languageCode: "en-us"
+title: "alejero.studio"
+theme: "PaperMod"
+
+params:
+  homeInfoParams:
+    Title: "Hi, I'm Ale!"
+    Content: "Welcome to my creative space for drawing, photography, animation, and dev projects."
+
+  ShowReadingTime: true
+  ShowCodeCopyButtons: true
+
+menu:
+  main:
+    - name: "Now"
+      url: "/now/"
+      weight: 1
