@@ -1,0 +1,21 @@
+<span id="duo-streak" style="
+  background: #e2ffe2;
+  color: #2c662d;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: system-ui, sans-serif;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+">
+  🔥 Loading streak...
+</span>
+
+<script>
+  const streakStart = new Date("2024-11-19"); // <-- Replace with your actual streak start date
+  const today = new Date();
+  const diffTime = today - streakStart;
+  const streakCount = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  document.getElementById("duo-streak").textContent = `🔥 Day ${streakCount}`;
+</script>

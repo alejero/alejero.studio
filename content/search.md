@@ -2,6 +2,7 @@
 title: "Search"
 layout: "search"
 url: "search"
-outputs: ["html"]
 draft: false
+summary: "search"
+placeholder: "Explore my world..."
 ---

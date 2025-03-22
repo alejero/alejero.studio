@@ -2,41 +2,59 @@ baseURL: "https://alejero.studio/"
 languageCode: "en-us"
 title: "alejero.studio"
 theme: "PaperMod"
+favicon: "favicon.ico"
 
 params:
   homeInfoParams:
     Title: "Hi, I'm alejero 👋"
     Content: "Welcome to my little corner of the internet! I draw, snap photos, animate, and tinker with code."
 
-  ShowReadingTime: true
-  ShowCodeCopyButtons: true
+  ShowBreadCrumbs: true
+  ShowPostImage: true
+  mainSections:
+    - posts
+  profileMode:
+    enabled: false
+  
 
-  # Enable search
-  ShowSearch: true
-  fuseOpts: # Optional: config for Fuse.js
-    isCaseSensitive: false
-    shouldSort: true
-    includeMatches: true
-    findAllMatches: false
-    minMatchCharLength: 2
-    location: 0
-    threshold: 0.3
-    distance: 100
-    keys: ["title", "description", "content"]
+# Enable search
+ShowSearch: true
+fuseOpts: # Optional: config for Fuse.js
+  isCaseSensitive: false
+  shouldSort: true
+  includeMatches: true
+  findAllMatches: false
+  minMatchCharLength: 2
+  location: 0
+  threshold: 0.3
+  distance: 100
+  keys: ["title", "description", "content"]
 
 menu:
   main:
-    - name: "About"
-      url: "/about/"
+    - name: "Archive"
+      url: "/archive/"
       weight: 1
-    - name: "Now"
-      url: "/now/"
-      weight: 2
-    - name: "Log"
-      url: "/log/"
-      weight: 3
     - name: "Search"
       url: "/search/"
+      weight: 2
+    - name: "About"
+      url: "/about/"
+      weight: 3
+    - name: "Now"
+      url: "/now/"
       weight: 4
-
+    - name: "Log"
+      url: "/log/"
+      weight: 5
     
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+  
+privacy:
+  instagram:
+    disable: false
+    simple: false
