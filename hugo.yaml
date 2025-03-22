@@ -5,16 +5,38 @@ theme: "PaperMod"
 
 params:
   homeInfoParams:
-    params:
-  homeInfoParams:
-    Title: "Hi, I'm Ale 👋"
+    Title: "Hi, I'm alejero 👋"
     Content: "Welcome to my little corner of the internet! I draw, snap photos, animate, and tinker with code."
 
   ShowReadingTime: true
   ShowCodeCopyButtons: true
 
+  # Enable search
+  ShowSearch: true
+  fuseOpts: # Optional: config for Fuse.js
+    isCaseSensitive: false
+    shouldSort: true
+    includeMatches: true
+    findAllMatches: false
+    minMatchCharLength: 2
+    location: 0
+    threshold: 0.3
+    distance: 100
+    keys: ["title", "description", "content"]
+
 menu:
   main:
+    - name: "About"
+      url: "/about/"
+      weight: 1
     - name: "Now"
       url: "/now/"
-      weight: 1
+      weight: 2
+    - name: "Log"
+      url: "/log/"
+      weight: 3
+    - name: "Search"
+      url: "/search/"
+      weight: 4
+
+    
