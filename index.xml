@@ -1,1 +1,43 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>alejero.studio</title><link>https://alejero.studio/</link><description>Recent content on alejero.studio</description><generator>Hugo -- 0.145.0</generator><language>en-us</language><atom:link href="https://alejero.studio/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>alejero.studio</title><link>https://alejero.studio/</link><description>Recent content on alejero.studio</description><generator>Hugo -- 0.145.0</generator><language>en-us</language><lastBuildDate>Fri, 21 Mar 2025 16:06:00 -0700</lastBuildDate><atom:link href="https://alejero.studio/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://alejero.studio/about/</link><pubDate>Fri, 21 Mar 2025 16:06:00 -0700</pubDate><guid>https://alejero.studio/about/</guid><description>&lt;h1 id="-hello-im-alejandro-jeronimo">👋 Hello, I&amp;rsquo;m Alejandro Jeronimo&lt;/h1>
+&lt;p>I&amp;rsquo;m a creative human who loves drawing, photography, animation, and coding.&lt;br>
+I built this site to document my explorations and share what inspires me.&lt;/p>
+&lt;hr></description></item><item><title>Now</title><link>https://alejero.studio/now/</link><pubDate>Fri, 21 Mar 2025 15:34:40 -0700</pubDate><guid>https://alejero.studio/now/</guid><description>&lt;h1 id="what-im-currently-into">What I&amp;rsquo;m Currently Into&lt;/h1>
+&lt;h2 id="-duolingo-streak">🔥 Duolingo Streak&lt;/h2>
+&lt;ul>
+&lt;li>I&amp;rsquo;m currently on a &lt;span id="duo-streak" style="
+background: #e2ffe2;
+color: #2c662d;
+padding: 4px 10px;
+border-radius: 8px;
+font-weight: 600;
+font-family: system-ui, sans-serif;
+display: inline-block;
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+">
+🔥 Loading streak...
+&lt;/span>
+&lt;script>
+const streakStart = new Date("2024-11-19");
+const today = new Date();
+const diffTime = today - streakStart;
+const streakCount = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+document.getElementById("duo-streak").textContent = `🔥 Day ${streakCount}`;
+&lt;/script> streak learning Italian on Duolingo!&lt;/li>
+&lt;/ul>
+&lt;h2 id="-reading">📖 Reading&lt;/h2>
+&lt;ul>
+&lt;li>“Harry Potter y la Cámara Secreta” by J.K. Rowling&lt;/li>
+&lt;/ul>
+&lt;h2 id="-playing">🕹️ Playing&lt;/h2>
+&lt;ul>
+&lt;li>Mini Motorways on iPad&lt;/li>
+&lt;li>Railbound on iPad&lt;/li>
+&lt;li>Mario &amp;amp; Luigi: Brothership on Nintendo Switch&lt;/li>
+&lt;li>Captain Toad: Treasure Tracker on Nintendo Switch&lt;/li>
+&lt;/ul>
+&lt;h2 id="-watching">📺 Watching&lt;/h2>
+&lt;ul>
+&lt;li>Severance on Apple TV+&lt;/li>
+&lt;li>Daredevil on Disney+&lt;/li>
+&lt;li>Gravity Falls from my Library&lt;/li>
+&lt;/ul></description></item><item><title>Photo - Chente at Bubble Bee</title><link>https://alejero.studio/posts/chente-at-bubblebee/</link><pubDate>Thu, 07 Jul 2022 17:15:12 -0700</pubDate><guid>https://alejero.studio/posts/chente-at-bubblebee/</guid><description>Captured Chente&amp;#39;s outting to Bubble Bee for some bobba drinks.</description></item></channel></rss>
