@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>alejero.studio · Photography, illustration, design &amp; development</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#FFF8EF">
+<meta name="description" content="alejero.studio is a multi-disciplinary studio working across photography, illustration, design and development." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#FFF8EF;
+    --ink:#1B1714;
+    --ink-soft:#5A5048;
+    --coral:#FF7A59;
+    --peach:#FFC894;
+    --butter:#FFE39A;
+    --blush:#FFB3B8;
+    --sky:#9FDBD3;
+    --lilac:#CDBDF5;
+
+    --glass-fill:rgba(255,255,255,0.42);
+    --glass-fill-strong:rgba(255,255,255,0.62);
+    --glass-stroke:rgba(255,255,255,0.65);
+    --glass-stroke-dark:rgba(27,23,20,0.08);
+    --glass-shadow:0 18px 50px -16px rgba(80,45,20,0.30);
+    --glass-shadow-lift:0 30px 70px -18px rgba(80,45,20,0.42);
+
+    --radius:30px;
+    --radius-sm:20px;
+    --display:"Shantell Sans", system-ui, sans-serif;
+    --body:"Hanken Grotesk", system-ui, sans-serif;
+    --maxw:1180px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+    min-height:100vh;
+  }
+
+  /* ---------- warm gradient atmosphere + blobs ---------- */
+  .bg{position:fixed;inset:0;z-index:-2;overflow:hidden}
+  .bg::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 12% 8%, var(--butter) 0%, transparent 48%),
+      radial-gradient(120% 100% at 88% 4%, var(--blush) 0%, transparent 46%),
+      radial-gradient(130% 120% at 50% 100%, var(--peach) 0%, transparent 60%),
+      var(--paper);
+  }
+  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;mix-blend-mode:multiply;will-change:transform}
+  .blob.b1{width:46vw;height:46vw;left:-8vw;top:-6vw;background:var(--coral);animation:drift1 22s ease-in-out infinite}
+  .blob.b2{width:40vw;height:40vw;right:-6vw;top:6vw;background:var(--lilac);animation:drift2 26s ease-in-out infinite}
+  .blob.b3{width:50vw;height:50vw;left:24vw;bottom:-18vw;background:var(--sky);opacity:.5;animation:drift3 30s ease-in-out infinite}
+  @keyframes drift1{50%{transform:translate(8vw,6vh) scale(1.08)}}
+  @keyframes drift2{50%{transform:translate(-6vw,8vh) scale(1.06)}}
+  @keyframes drift3{50%{transform:translate(5vw,-6vh) scale(1.1)}}
+
+  /* grain */
+  .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .blob{animation:none!important}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- liquid glass ---------- */
+  .glass{
+    position:relative;
+    background:var(--glass-fill);
+    backdrop-filter:blur(22px) saturate(180%);
+    -webkit-backdrop-filter:blur(22px) saturate(180%);
+    border:1px solid var(--glass-stroke);
+    border-radius:var(--radius);
+    box-shadow:var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 1px rgba(27,23,20,.04);
+    overflow:hidden;
+  }
+  /* specular sheen */
+  .glass::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:linear-gradient(135deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 38%);
+    mix-blend-mode:screen;
+  }
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{position:relative;z-index:1}
+
+  /* ---------- nav ---------- */
+  .nav{position:fixed;top:16px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 16px}
+  .nav-inner{
+    display:flex;align-items:center;gap:18px;
+    padding:9px 9px 9px 18px;border-radius:999px;
+    background:var(--glass-fill-strong);
+    backdrop-filter:blur(20px) saturate(180%);
+    -webkit-backdrop-filter:blur(20px) saturate(180%);
+    border:1px solid var(--glass-stroke);
+    box-shadow:var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.7);
+  }
+  .nav-brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;font-size:1rem;letter-spacing:.2px;text-decoration:none;color:var(--ink)}
+  .nav-brand img{height:26px;width:auto;display:block}
+  .nav-links{display:flex;gap:4px}
+  .nav-links a{
+    text-decoration:none;color:var(--ink-soft);font-size:.86rem;font-weight:600;
+    padding:8px 13px;border-radius:999px;transition:.25s;
+  }
+  .nav-links a:hover{color:var(--ink);background:rgba(255,255,255,.55)}
+  .nav-cta{
+    text-decoration:none;color:var(--paper);background:var(--ink);
+    font-weight:600;font-size:.86rem;padding:10px 16px;border-radius:999px;transition:.25s;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(27,23,20,.5)}
+  .lang-fixed{position:absolute;right:16px;top:50%;transform:translateY(-50%);z-index:60;display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:var(--glass-fill-strong);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--glass-stroke);box-shadow:var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.7);transition:opacity .35s ease, transform .35s ease}
+  .lang-fixed.tucked{opacity:0;transform:translateY(-160%);pointer-events:none}
+  .lang-btn{border:none;background:none;font-family:var(--display);font-weight:600;font-size:.8rem;color:var(--ink-soft);padding:6px 11px;border-radius:999px;cursor:pointer;transition:.2s;line-height:1}
+  .lang-btn.active{background:var(--ink);color:var(--paper)}
+  .lang-btn:not(.active):hover{color:var(--ink)}
+  @media(max-width:760px){.nav-links{display:none}.nav{justify-content:flex-start}}
+  @media(max-width:430px){.nav-brand span{display:none}.nav-inner{gap:10px}}
+
+  /* ---------- hero ---------- */
+  .hero{min-height:100svh;display:flex;align-items:center;padding:140px 0 80px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:36px;text-align:center}}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;
+    font-size:.95rem;color:var(--ink);padding:8px 16px;border-radius:999px;margin-bottom:22px;
+    background:var(--glass-fill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid var(--glass-stroke);box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+  }
+  .eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(255,122,89,.22)}
+
+  .hero h1{
+    font-family:var(--display);font-weight:600;line-height:1.02;letter-spacing:-.5px;
+    font-size:clamp(2.9rem,7vw,5.4rem);margin-bottom:22px;
+  }
+  .hero h1 .mark{position:relative;white-space:nowrap}
+  .hero h1 .mark svg{position:absolute;left:-4%;bottom:-.18em;width:108%;height:.42em;z-index:-1}
+  .hero p.lede{font-size:clamp(1.05rem,1.7vw,1.28rem);color:var(--ink-soft);max-width:30ch;margin-bottom:32px}
+  @media(max-width:880px){.hero p.lede{margin-left:auto;margin-right:auto}}
+
+  .disciplines{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+  @media(max-width:880px){.disciplines{justify-content:center}}
+  .chip{font-family:var(--display);font-weight:500;font-size:.9rem;padding:7px 15px;border-radius:999px;
+    background:rgba(255,255,255,.5);border:1px solid var(--glass-stroke-dark)}
+
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  @media(max-width:880px){.cta-row{justify-content:center}}
+  .btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:1rem;
+    padding:15px 26px;border-radius:999px;transition:.28s cubic-bezier(.2,.8,.2,1);cursor:pointer;border:none}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(27,23,20,.55)}
+  .btn-ghost{background:var(--glass-fill-strong);color:var(--ink);border:1px solid var(--glass-stroke);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--glass-shadow-lift)}
+  .btn .arrow{transition:transform .28s}
+  .btn:hover .arrow{transform:translate(3px,-3px)}
+
+  /* hero logo card */
+  .hero-card{padding:46px;display:grid;place-items:center;aspect-ratio:1/1;max-width:440px;margin:0 auto;width:100%}
+  .hero-card img{width:80%;height:auto;display:block;animation:floaty 7s ease-in-out infinite}
+  @keyframes floaty{50%{transform:translateY(-12px) rotate(-1deg)}}
+
+  /* ---------- section heads ---------- */
+  .sec-head{margin-bottom:40px}
+  .sec-kicker{font-family:var(--display);font-weight:600;color:var(--coral);font-size:1rem;margin-bottom:8px}
+  .sec-title{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4vw,3rem);line-height:1.04;letter-spacing:-.5px}
+  .sec-sub{color:var(--ink-soft);max-width:54ch;margin-top:12px;font-size:1.05rem}
+
+  /* ---------- work ---------- */
+  .work{padding:90px 0}
+  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:760px){.work-grid{grid-template-columns:1fr}}
+  .offer{padding:30px;display:flex;flex-direction:column;min-height:260px;transition:.35s cubic-bezier(.2,.8,.2,1)}
+  .offer:hover{transform:translateY(-6px);box-shadow:var(--glass-shadow-lift)}
+  .offer-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+  .offer-ico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;flex:0 0 auto;
+    background:rgba(255,255,255,.55);border:1px solid var(--glass-stroke-dark)}
+  .offer-ico svg{width:28px;height:28px;stroke:var(--ink);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .offer-tag{font-family:var(--display);font-weight:500;font-size:.78rem;color:var(--ink-soft);
+    padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.5);border:1px solid var(--glass-stroke-dark);white-space:nowrap}
+  .offer h3{font-family:var(--display);font-weight:600;font-size:1.7rem;margin-bottom:8px}
+  .offer p{color:var(--ink-soft);font-size:.98rem;margin-bottom:auto}
+  .offer-action{margin-top:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .offer-action .sep{width:1px;height:15px;background:rgba(27,23,20,.16);display:inline-block}
+  .offer-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);text-decoration:none;cursor:pointer;
+    background:none;border:none;font-family:var(--body);font-size:.98rem;padding:0}
+  .offer-link .ar{transition:transform .28s}
+  .offer-link:hover .ar{transform:translate(3px,-3px)}
+  .offer-link.inline:hover .ar{transform:translateY(3px)}
+
+  /* inline gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px;
+    max-height:0;opacity:0;overflow:hidden;transition:max-height .5s ease, opacity .4s ease, margin-top .4s ease}
+  .gallery.open{max-height:520px;opacity:1}
+  .gallery.g-illu,.gallery.g-photo{grid-template-columns:repeat(2,1fr)}
+  .gallery.g-illu.open,.gallery.g-photo.open{max-height:900px}
+  .gallery .art{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:14px;border:1px solid var(--glass-stroke-dark);background:rgba(255,255,255,.4)}
+  .tile{aspect-ratio:1/1;border-radius:14px;border:1px solid var(--glass-stroke-dark);position:relative;overflow:hidden;
+    display:grid;place-items:center}
+  .tile span{font-family:var(--display);font-size:.72rem;color:rgba(27,23,20,.45);position:relative;z-index:2}
+  /* placeholder swatches - replace each .tile with <img src="..."> */
+  .g-photo .tile:nth-child(1){background:linear-gradient(135deg,var(--peach),var(--coral))}
+  .g-photo .tile:nth-child(2){background:linear-gradient(135deg,var(--sky),var(--lilac))}
+  .g-photo .tile:nth-child(3){background:linear-gradient(135deg,var(--butter),var(--peach))}
+  .g-photo .tile:nth-child(4){background:linear-gradient(135deg,var(--lilac),var(--blush))}
+  .g-photo .tile:nth-child(5){background:linear-gradient(135deg,var(--coral),var(--butter))}
+  .g-photo .tile:nth-child(6){background:linear-gradient(135deg,var(--sky),var(--peach))}
+  .g-illu .tile:nth-child(1){background:linear-gradient(135deg,var(--lilac),var(--sky))}
+  .g-illu .tile:nth-child(2){background:linear-gradient(135deg,var(--blush),var(--butter))}
+  .g-illu .tile:nth-child(3){background:linear-gradient(135deg,var(--coral),var(--lilac))}
+  .g-illu .tile:nth-child(4){background:linear-gradient(135deg,var(--butter),var(--sky))}
+  .g-illu .tile:nth-child(5){background:linear-gradient(135deg,var(--peach),var(--blush))}
+  .g-illu .tile:nth-child(6){background:linear-gradient(135deg,var(--sky),var(--coral))}
+
+  /* ---------- contact ---------- */
+  .contact{padding:90px 0}
+  .contact-card{padding:clamp(34px,5vw,64px);text-align:center}
+  .contact-card h2{font-family:var(--display);font-weight:600;font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.02;letter-spacing:-.5px;margin-bottom:16px}
+  .contact-card p{color:var(--ink-soft);font-size:1.1rem;max-width:46ch;margin:0 auto 30px}
+  .contact-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- social ---------- */
+  .social{padding:44px 0 10px}
+  .social-kick{text-align:center;margin-bottom:24px}
+  .social-groups{display:flex;gap:48px;justify-content:center;flex-wrap:wrap}
+  .social-group{text-align:center}
+  .social-label{display:block;font-family:var(--display);font-weight:600;font-size:1.08rem;margin-bottom:14px;color:var(--ink)}
+  .social-label em{font-style:normal;color:var(--coral)}
+  .social-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .social-feature{margin-bottom:28px;text-align:center}
+  .social-feature .social-label{font-size:1.18rem}
+  .social-pill.lead{background:linear-gradient(135deg, rgba(255,122,89,.18), rgba(255,255,255,.5));border-color:rgba(255,122,89,.42)}
+  .social-pill.lead:hover{box-shadow:0 14px 30px -12px rgba(255,122,89,.5)}
+  .social-divider{display:flex;align-items:center;gap:14px;max-width:380px;margin:0 auto 26px;color:var(--ink-soft);font-family:var(--display);font-weight:500;font-size:.92rem}
+  .social-divider::before,.social-divider::after{content:"";flex:1;height:1px;background:rgba(27,23,20,.14)}
+  .social-pill{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-weight:600;
+    padding:12px 20px;border-radius:999px;transition:.28s;
+    background:var(--glass-fill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid var(--glass-stroke);box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+  .social-pill:hover{transform:translateY(-3px);box-shadow:var(--glass-shadow)}
+  .social-pill svg{width:19px;height:19px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---------- about ---------- */
+  .about{padding:80px 0 60px}
+  .about-card{padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
+  @media(max-width:760px){.about-card{grid-template-columns:1fr;text-align:center}}
+  .about-card .who{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05;letter-spacing:-.5px}
+  .about-card .who .hl{color:var(--coral)}
+  .about-card p{color:var(--ink-soft);font-size:1.06rem;margin-bottom:14px}
+  .about-card p:last-child{margin-bottom:0}
+
+  /* ---------- footer ---------- */
+  footer{margin-top:40px;padding:46px 0 60px}
+  .foot-card{padding:38px clamp(28px,5vw,52px);display:flex;flex-direction:column;gap:22px;
+    background:var(--ink);border-radius:var(--radius);color:rgba(255,248,239,.7);position:relative;overflow:hidden}
+  .foot-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative}
+  .foot-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,122,89,.18),transparent 50%)}
+  .foot-brand{display:flex;align-items:center;gap:14px;position:relative}
+  .foot-brand img{height:46px;width:auto}
+  .foot-brand .url{font-family:var(--display);font-weight:600;font-size:1.25rem;color:var(--paper)}
+  .foot-social{display:flex;gap:10px;position:relative}
+  .foot-social a{color:var(--paper);opacity:.82;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,248,239,.25);transition:.25s;text-decoration:none}
+  .foot-social a:hover{opacity:1;background:rgba(255,248,239,.12);transform:translateY(-2px)}
+  .foot-social svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .foot-meta{font-size:.9rem;position:relative;text-align:left}
+  .foot-meta a{color:var(--paper);text-decoration:none;font-weight:600}
+  @media(max-width:560px){.foot-top{flex-direction:column;align-items:center;text-align:center}.foot-brand{justify-content:center;flex-wrap:wrap}.foot-social{justify-content:center}.foot-meta{text-align:center}}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .stagger>*{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1)}
+  .stagger.in>*{opacity:1;transform:none}
+  .stagger.in>*:nth-child(2){transition-delay:.08s}
+  .stagger.in>*:nth-child(3){transition-delay:.16s}
+  .stagger.in>*:nth-child(4){transition-delay:.24s}
+
+  /* load-in for hero */
+  .load{opacity:0;transform:translateY(24px);animation:load .8s cubic-bezier(.2,.8,.2,1) forwards}
+  .load.d1{animation-delay:.05s}.load.d2{animation-delay:.18s}.load.d3{animation-delay:.31s}.load.d4{animation-delay:.44s}.load.d5{animation-delay:.57s}
+  @keyframes load{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+  <div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+  <div class="grain"></div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top"><img src="assets/alejerostudio-black-logo.png" alt="alejero.studio logo" /><span>alejero.studio</span></a>
+      <div class="nav-links">
+        <a href="#work" data-i18n="nav_work">Work</a>
+        <a href="#about" data-i18n="nav_studio">About</a>
+        <a href="#social" data-i18n="nav_follow">Follow</a>
+      </div>
+      <a class="nav-cta" href="#contact" data-i18n="nav_cta">Get in touch</a>
+    </div>
+    <div class="lang-fixed" role="group" aria-label="Language / Idioma">
+      <button class="lang-btn active" data-lang="en" type="button">EN</button>
+      <button class="lang-btn" data-lang="es" type="button">ES</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow load d1"><span class="dot"></span> <span data-i18n="eyebrow">Creative &amp; development studio</span></span>
+        <h1 class="load d2"><span data-i18n="hero_h1a">Where ideas get </span><span class="mark"><span data-i18n="hero_mark">made</span><svg viewBox="0 0 200 30" preserveAspectRatio="none"><path d="M3 20 C 50 8, 150 8, 197 18" stroke="var(--coral)" stroke-width="7" fill="none" stroke-linecap="round"/></svg></span><span data-i18n="hero_h1b">, with intention.</span></h1>
+        <p class="lede load d3" data-i18n="lede">alejero.studio works across photography, illustration, design and development. One studio, four crafts, made to work together.</p>
+        <div class="disciplines load d4">
+          <span class="chip" data-i18n="chip_photo">Photography</span>
+          <span class="chip" data-i18n="chip_illu">Illustration</span>
+          <span class="chip" data-i18n="chip_design">Design</span>
+          <span class="chip" data-i18n="chip_dev">Development</span>
+        </div>
+        <div class="cta-row load d5">
+          <a class="btn btn-primary" href="#work"><span data-i18n="cta_work">See the work</span> <span class="arrow">↗</span></a>
+          <a class="btn btn-ghost" href="#contact" data-i18n="cta_project">Start a project</a>
+        </div>
+      </div>
+      <div class="hero-card glass load d3">
+        <img src="assets/alejerostudio-black-logo.png" alt="alejero.studio" />
+      </div>
+    </div>
+  </header>
+
+  <!-- WORK -->
+  <section id="work" class="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker" data-i18n="work_kicker">The work</div>
+        <h2 class="sec-title" data-i18n="work_title">Four crafts, one studio.</h2>
+        <p class="sec-sub" data-i18n="work_sub">Browse photography and illustration right here, or jump into full design and development projects.</p>
+      </div>
+
+      <div class="work-grid stagger">
+
+        <!-- PHOTOGRAPHY - inline -->
+        <article class="offer glass">
+          <div class="offer-top">
+            <div class="offer-ico">
+              <svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.2-2h7.6L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="13" cy="12" r="3.4"/></svg>
+            </div>
+            <span class="offer-tag" data-i18n="tag_gallery">Gallery below</span>
+          </div>
+          <h3 data-i18n="photo_h3">Photography</h3>
+          <p data-i18n="photo_p">Portraits, products and places. Light, texture and a quiet eye for the moment.</p>
+          <div class="offer-action">
+            <button class="offer-link inline" data-gallery="g-photo" aria-expanded="false"><span data-i18n="view_gallery">View gallery</span> <span class="ar">↓</span></button>
+            <span class="sep"></span>
+            <a class="offer-link" href="https://alejerophoto.com" target="_blank" rel="noopener"><span data-i18n="full_portfolio">Full portfolio</span> <span class="ar">↗</span></a>
+          </div>
+          <div class="gallery g-photo">
+            <img class="art" style="object-position:center 62%" src="assets/alejerophoto/images/chente-in-kino.jpg" alt="Golden retriever on the beach at sunset" />
+            <img class="art" style="object-position:center 30%" src="assets/alejerophoto/images/radio-city-blurred.jpg" alt="Radio City Music Hall neon sign at night" />
+            <img class="art" style="object-position:center 62%" src="assets/alejerophoto/images/porsche-in-snowy-nyc.jpg" alt="Vintage Porsche on a snowy New York street" />
+            <img class="art" src="assets/alejerophoto/images/cozy-chente.jpg" alt="Golden retriever resting cozily indoors" />
+            <img class="art" style="object-position:center 55%" src="assets/alejerophoto/images/dramatic-seagull-kino.jpg" alt="Seagull in flight over the ocean at dusk" />
+            <img class="art" style="object-position:center 60%" src="assets/alejerophoto/images/porsche-with-mountain.jpg" alt="Porsche Carrera RS with desert mountains behind" />
+          </div>
+        </article>
+
+        <!-- ILLUSTRATION - inline -->
+        <article class="offer glass">
+          <div class="offer-top">
+            <div class="offer-ico">
+              <svg viewBox="0 0 24 24"><path d="M15.5 4.5l4 4L8 20l-4.5.5L4 16z"/><path d="M13.5 6.5l4 4"/></svg>
+            </div>
+            <span class="offer-tag" data-i18n="tag_gallery">Gallery below</span>
+          </div>
+          <h3 data-i18n="illu_h3">Illustration</h3>
+          <p data-i18n="illu_p">Hand-drawn marks, characters and editorial work with personality and play.</p>
+          <div class="offer-action">
+            <button class="offer-link inline" data-gallery="g-illu" aria-expanded="false"><span data-i18n="view_gallery">View gallery</span> <span class="ar">↓</span></button>
+          </div>
+          <div class="gallery g-illu">
+            <img class="art" src="assets/alejerodraw/images/harry-potter-lumos.jpg" alt="Illustration of Harry Potter casting Lumos" />
+            <video class="art" style="object-position:center 100%" autoplay loop muted playsinline preload="metadata"><source src="assets/alejerodraw/videos/chewie-millenium-falcon.MP4" type="video/mp4"></video>
+            <img class="art" style="object-position:center 100%" src="assets/alejerodraw/images/mustang-1976.jpg" alt="Illustration of a 1976 Mustang at an intersection" />
+            <img class="art" src="assets/alejerodraw/images/mario-luigi-brothership.jpg" alt="Illustration of Mario and Luigi on a small island" />
+            <video class="art" autoplay loop muted playsinline preload="metadata"><source src="assets/alejerodraw/videos/bulbasaur-earth-day.MP4" type="video/mp4"></video>
+            <img class="art" style="object-position:center 80%" src="assets/alejerodraw/images/riolu-running-field.jpg" alt="Illustration of Riolu resting in a field" />
+          </div>
+        </article>
+
+        <!-- DESIGN - links out -->
+        <article class="offer glass">
+          <div class="offer-top">
+            <div class="offer-ico">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+            </div>
+            <span class="offer-tag" data-i18n="tag_project">Project page</span>
+          </div>
+          <h3 data-i18n="design_h3">Design</h3>
+          <p data-i18n="design_p">Brand systems, layouts and interfaces. Considered, useful, and built to last.</p>
+          <div class="offer-action">
+            <!-- design portfolio -->
+            <a class="offer-link" href="https://alejero.com" target="_blank" rel="noopener"><span data-i18n="view_projects">View projects</span> <span class="ar">↗</span></a>
+          </div>
+        </article>
+
+        <!-- DEVELOPMENT - links out -->
+        <article class="offer glass">
+          <div class="offer-top">
+            <div class="offer-ico">
+              <svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/></svg>
+            </div>
+            <span class="offer-tag" data-i18n="tag_project">Project page</span>
+          </div>
+          <h3 data-i18n="dev_h3">Development</h3>
+          <p data-i18n="dev_p">Sites and small apps that feel as good as they look. From idea to shipped.</p>
+          <div class="offer-action">
+            <!-- development portfolio -->
+            <a class="offer-link" href="https://alejero.com" target="_blank" rel="noopener"><span data-i18n="view_projects">View projects</span> <span class="ar">↗</span></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="contact-card glass reveal">
+        <div class="sec-kicker" data-i18n="contact_kicker">Get in touch</div>
+        <h2 data-i18n="contact_h2">Let's make<br>something together.</h2>
+        <p data-i18n="contact_p">Commissions, collaborations and curious questions all welcome. Tell me what you have in mind and let's see where it goes.</p>
+        <div class="contact-cta">
+          <a class="btn btn-primary" href="mailto:hello@alejero.studio">hello@alejero.studio <span class="arrow">↗</span></a>
+          <a class="btn btn-ghost" href="#social" data-i18n="contact_elsewhere">Find me elsewhere</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section id="social" class="social">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-kicker social-kick" data-i18n="social_kicker">Follow along</div>
+
+        <div class="social-feature">
+          <span class="social-label"><span data-i18n="social_studio">The studio</span> <em>@alejerostudio</em></span>
+          <div class="social-row">
+            <a class="social-pill lead" href="https://www.instagram.com/alejerostudio/" target="_blank" rel="noopener" title="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--ink)" stroke="none"/></svg>
+              Instagram
+            </a>
+            <a class="social-pill lead" href="https://www.threads.com/@alejerostudio" target="_blank" rel="noopener" title="Threads">
+              <svg viewBox="0 0 24 24" style="fill:var(--ink);stroke:none"><path d="M12.19 22c-3.02-.02-5.34-1.02-6.9-2.97C3.88 17.3 3.13 14.9 3.11 12v-.01c.02-2.9.78-5.3 2.25-7.06C6.9 3 9.21 2 12.23 2h.01c2.32.02 4.26.61 5.76 1.77 1.41 1.09 2.41 2.64 2.96 4.61l-1.72.48c-.93-3.34-3.29-5.05-7.01-5.07-2.46.02-4.31.79-5.52 2.29C5.5 7.92 4.92 9.95 4.9 12c.02 2.05.6 4.08 1.74 5.48 1.21 1.5 3.06 2.27 5.52 2.29 2.21-.02 3.68-.53 4.9-1.72 1.39-1.36 1.36-3.03.91-4.05-.26-.6-.74-1.1-1.38-1.48-.16 1.14-.52 2.06-1.08 2.76-.75.93-1.81 1.44-3.15 1.51-1.02.05-2-.18-2.75-.68-.9-.58-1.42-1.47-1.48-2.5-.05-1 .35-1.93 1.12-2.6.74-.64 1.79-1.02 3.02-1.09.45-.02.88 0 1.3.05-.12-.66-.35-1.2-.7-1.61-.47-.53-1.19-.8-2.13-.8h-.05c-.77.01-1.4.29-1.84.83l-1.33-.9c.62-.95 1.64-1.44 3-1.44h.13c2.25.04 3.6 1.42 3.71 3.8 0 .02 0 .03.01.05.09.04.18.09.26.14 1.21.71 2.09 1.76 2.54 3.05.7 1.98.67 4.65-1.26 6.54-1.53 1.49-3.38 2.15-5.88 2.18zm-1.29-10.2c-.82.05-1.5.28-1.97.68-.43.37-.66.85-.63 1.34.03.55.33.98.84 1.23.42.2.95.3 1.54.27.73-.04 1.3-.3 1.71-.78.33-.39.54-.91.63-1.55a8.3 8.3 0 0 0-1.84-.17l-.28-.01z"/></svg>
+              Threads
+            </a>
+          </div>
+        </div>
+
+        <div class="social-divider" data-i18n="social_divider">or follow a single craft</div>
+
+        <div class="social-groups">
+
+          <div class="social-group">
+            <span class="social-label"><span data-i18n="social_photo">Photography</span> <em>@alejerophoto</em></span>
+            <div class="social-row">
+              <a class="social-pill" href="https://www.instagram.com/alejerophoto/" target="_blank" rel="noopener" title="Instagram">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--ink)" stroke="none"/></svg>
+                Instagram
+              </a>
+              <a class="social-pill" href="https://www.threads.com/@alejerophoto" target="_blank" rel="noopener" title="Threads">
+                <svg viewBox="0 0 24 24" style="fill:var(--ink);stroke:none"><path d="M12.19 22c-3.02-.02-5.34-1.02-6.9-2.97C3.88 17.3 3.13 14.9 3.11 12v-.01c.02-2.9.78-5.3 2.25-7.06C6.9 3 9.21 2 12.23 2h.01c2.32.02 4.26.61 5.76 1.77 1.41 1.09 2.41 2.64 2.96 4.61l-1.72.48c-.93-3.34-3.29-5.05-7.01-5.07-2.46.02-4.31.79-5.52 2.29C5.5 7.92 4.92 9.95 4.9 12c.02 2.05.6 4.08 1.74 5.48 1.21 1.5 3.06 2.27 5.52 2.29 2.21-.02 3.68-.53 4.9-1.72 1.39-1.36 1.36-3.03.91-4.05-.26-.6-.74-1.1-1.38-1.48-.16 1.14-.52 2.06-1.08 2.76-.75.93-1.81 1.44-3.15 1.51-1.02.05-2-.18-2.75-.68-.9-.58-1.42-1.47-1.48-2.5-.05-1 .35-1.93 1.12-2.6.74-.64 1.79-1.02 3.02-1.09.45-.02.88 0 1.3.05-.12-.66-.35-1.2-.7-1.61-.47-.53-1.19-.8-2.13-.8h-.05c-.77.01-1.4.29-1.84.83l-1.33-.9c.62-.95 1.64-1.44 3-1.44h.13c2.25.04 3.6 1.42 3.71 3.8 0 .02 0 .03.01.05.09.04.18.09.26.14 1.21.71 2.09 1.76 2.54 3.05.7 1.98.67 4.65-1.26 6.54-1.53 1.49-3.38 2.15-5.88 2.18zm-1.29-10.2c-.82.05-1.5.28-1.97.68-.43.37-.66.85-.63 1.34.03.55.33.98.84 1.23.42.2.95.3 1.54.27.73-.04 1.3-.3 1.71-.78.33-.39.54-.91.63-1.55a8.3 8.3 0 0 0-1.84-.17l-.28-.01z"/></svg>
+                Threads
+              </a>
+            </div>
+          </div>
+
+          <div class="social-group">
+            <span class="social-label"><span data-i18n="social_illu">Illustration</span> <em>@alejerodraw</em></span>
+            <div class="social-row">
+              <a class="social-pill" href="https://www.instagram.com/alejerodraw/" target="_blank" rel="noopener" title="Instagram">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--ink)" stroke="none"/></svg>
+                Instagram
+              </a>
+              <a class="social-pill" href="https://www.threads.com/@alejerodraw" target="_blank" rel="noopener" title="Threads">
+                <svg viewBox="0 0 24 24" style="fill:var(--ink);stroke:none"><path d="M12.19 22c-3.02-.02-5.34-1.02-6.9-2.97C3.88 17.3 3.13 14.9 3.11 12v-.01c.02-2.9.78-5.3 2.25-7.06C6.9 3 9.21 2 12.23 2h.01c2.32.02 4.26.61 5.76 1.77 1.41 1.09 2.41 2.64 2.96 4.61l-1.72.48c-.93-3.34-3.29-5.05-7.01-5.07-2.46.02-4.31.79-5.52 2.29C5.5 7.92 4.92 9.95 4.9 12c.02 2.05.6 4.08 1.74 5.48 1.21 1.5 3.06 2.27 5.52 2.29 2.21-.02 3.68-.53 4.9-1.72 1.39-1.36 1.36-3.03.91-4.05-.26-.6-.74-1.1-1.38-1.48-.16 1.14-.52 2.06-1.08 2.76-.75.93-1.81 1.44-3.15 1.51-1.02.05-2-.18-2.75-.68-.9-.58-1.42-1.47-1.48-2.5-.05-1 .35-1.93 1.12-2.6.74-.64 1.79-1.02 3.02-1.09.45-.02.88 0 1.3.05-.12-.66-.35-1.2-.7-1.61-.47-.53-1.19-.8-2.13-.8h-.05c-.77.01-1.4.29-1.84.83l-1.33-.9c.62-.95 1.64-1.44 3-1.44h.13c2.25.04 3.6 1.42 3.71 3.8 0 .02 0 .03.01.05.09.04.18.09.26.14 1.21.71 2.09 1.76 2.54 3.05.7 1.98.67 4.65-1.26 6.54-1.53 1.49-3.38 2.15-5.88 2.18zm-1.29-10.2c-.82.05-1.5.28-1.97.68-.43.37-.66.85-.63 1.34.03.55.33.98.84 1.23.42.2.95.3 1.54.27.73-.04 1.3-.3 1.71-.78.33-.39.54-.91.63-1.55a8.3 8.3 0 0 0-1.84-.17l-.28-.01z"/></svg>
+                Threads
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="about-card glass reveal">
+        <div class="who" data-i18n="about_who">A studio run<br>on <span class="hl">curiosity</span><br>and craft.</div>
+        <div>
+          <p data-i18n="about_p1">alejero.studio is a multi-disciplinary practice spanning photography, illustration, design and development. The thread through all of it is care: bringing real intention to every project, getting the details right, and keeping a sense of play.</p>
+          <p data-i18n="about_p2">Whether it's a single image, a full brand, or a site built from scratch, the work starts with a real idea and ends with something you're proud to put your name on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-card reveal">
+        <div class="foot-top">
+          <div class="foot-brand">
+          <img src="assets/alejerostudio-white-logo.png" alt="alejero.studio" />
+          <span class="url">alejero.studio</span>
+        </div>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/alejerostudio/" target="_blank" rel="noopener" title="alejero.studio on Instagram" aria-label="alejero.studio on Instagram">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.threads.com/@alejerostudio" target="_blank" rel="noopener" title="alejero.studio on Threads" aria-label="alejero.studio on Threads">
+            <svg viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><path d="M12.19 22c-3.02-.02-5.34-1.02-6.9-2.97C3.88 17.3 3.13 14.9 3.11 12v-.01c.02-2.9.78-5.3 2.25-7.06C6.9 3 9.21 2 12.23 2h.01c2.32.02 4.26.61 5.76 1.77 1.41 1.09 2.41 2.64 2.96 4.61l-1.72.48c-.93-3.34-3.29-5.05-7.01-5.07-2.46.02-4.31.79-5.52 2.29C5.5 7.92 4.92 9.95 4.9 12c.02 2.05.6 4.08 1.74 5.48 1.21 1.5 3.06 2.27 5.52 2.29 2.21-.02 3.68-.53 4.9-1.72 1.39-1.36 1.36-3.03.91-4.05-.26-.6-.74-1.1-1.38-1.48-.16 1.14-.52 2.06-1.08 2.76-.75.93-1.81 1.44-3.15 1.51-1.02.05-2-.18-2.75-.68-.9-.58-1.42-1.47-1.48-2.5-.05-1 .35-1.93 1.12-2.6.74-.64 1.79-1.02 3.02-1.09.45-.02.88 0 1.3.05-.12-.66-.35-1.2-.7-1.61-.47-.53-1.19-.8-2.13-.8h-.05c-.77.01-1.4.29-1.84.83l-1.33-.9c.62-.95 1.64-1.44 3-1.44h.13c2.25.04 3.6 1.42 3.71 3.8 0 .02 0 .03.01.05.09.04.18.09.26.14 1.21.71 2.09 1.76 2.54 3.05.7 1.98.67 4.65-1.26 6.54-1.53 1.49-3.38 2.15-5.88 2.18zm-1.29-10.2c-.82.05-1.5.28-1.97.68-.43.37-.66.85-.63 1.34.03.55.33.98.84 1.23.42.2.95.3 1.54.27.73-.04 1.3-.3 1.71-.78.33-.39.54-.91.63-1.55a8.3 8.3 0 0 0-1.84-.17l-.28-.01z"/></svg>
+          </a>
+        </div>
+        </div>
+        <div class="foot-meta">
+          <div data-i18n="foot_disciplines">Photography · Illustration · Design · Development</div>
+          <div style="margin-top:6px">&copy; <span id="year"></span> alejero.studio · <a href="mailto:hello@alejero.studio">hello@alejero.studio</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // inline gallery toggles
+  document.querySelectorAll('[data-gallery]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var g = document.querySelector('.' + btn.dataset.gallery);
+      var open = g.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      var ar = btn.querySelector('.ar');
+      ar.textContent = open ? '↑' : '↓';
+    });
+  });
+
+  // respect reduced-motion: hold the gallery animations still
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.gallery video').forEach(function(v){ v.removeAttribute('autoplay'); try{ v.pause(); }catch(e){} });
+  }
+
+  // reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.16});
+  document.querySelectorAll('.reveal, .stagger').forEach(function(el){ io.observe(el); });
+
+  // i18n: EN | ES language toggle (English default)
+  var i18n = {
+    en: {
+      nav_work:"Work", nav_studio:"About", nav_follow:"Follow", nav_cta:"Get in touch",
+      eyebrow:"Creative & development studio",
+      hero_h1a:"Where ideas get ", hero_mark:"made", hero_h1b:", with intention.",
+      lede:"alejero.studio works across photography, illustration, design and development. One studio, four crafts, made to work together.",
+      chip_photo:"Photography", chip_illu:"Illustration", chip_design:"Design", chip_dev:"Development",
+      cta_work:"See the work", cta_project:"Start a project",
+      work_kicker:"The work", work_title:"Four crafts, one studio.",
+      work_sub:"Browse photography and illustration right here, or jump into full design and development projects.",
+      tag_gallery:"Gallery below", tag_project:"Project page",
+      view_gallery:"View gallery", full_portfolio:"Full portfolio", view_projects:"View projects",
+      photo_h3:"Photography", photo_p:"Portraits, products and places. Light, texture and a quiet eye for the moment.",
+      illu_h3:"Illustration", illu_p:"Hand-drawn marks, characters and editorial work with personality and play.",
+      design_h3:"Design", design_p:"Brand systems, layouts and interfaces. Considered, useful, and built to last.",
+      dev_h3:"Development", dev_p:"Sites and small apps that feel as good as they look. From idea to shipped.",
+      contact_kicker:"Get in touch", contact_h2:"Let's make<br>something together.",
+      contact_p:"Commissions, collaborations and curious questions all welcome. Tell me what you have in mind and let's see where it goes.",
+      contact_elsewhere:"Find me elsewhere",
+      social_kicker:"Follow along", social_studio:"The studio", social_divider:"or follow a single craft",
+      social_photo:"Photography", social_illu:"Illustration",
+      about_who:"A studio run<br>on <span class=\"hl\">curiosity</span><br>and craft.",
+      about_p1:"alejero.studio is a multi-disciplinary practice spanning photography, illustration, design and development. The thread through all of it is care: bringing real intention to every project, getting the details right, and keeping a sense of play.",
+      about_p2:"Whether it's a single image, a full brand, or a site built from scratch, the work starts with a real idea and ends with something you're proud to put your name on.",
+      foot_disciplines:"Photography \u00b7 Illustration \u00b7 Design \u00b7 Development",
+      _title:"alejero.studio \u00b7 Photography, illustration, design & development"
+    },
+    es: {
+      nav_work:"Trabajo", nav_studio:"Nosotros", nav_follow:"Redes", nav_cta:"Cont\u00e1ctame",
+      eyebrow:"Estudio creativo y de desarrollo",
+      hero_h1a:"Donde las ideas se ", hero_mark:"hacen", hero_h1b:", con intenci\u00f3n.",
+      lede:"alejero.studio trabaja en fotograf\u00eda, ilustraci\u00f3n, dise\u00f1o y desarrollo. Un estudio, cuatro disciplinas, hechas para trabajar juntos.",
+      chip_photo:"Fotograf\u00eda", chip_illu:"Ilustraci\u00f3n", chip_design:"Dise\u00f1o", chip_dev:"Desarrollo",
+      cta_work:"Ver el trabajo", cta_project:"Empezar un proyecto",
+      work_kicker:"El trabajo", work_title:"Cuatro disciplinas, un estudio.",
+      work_sub:"Explora fotograf\u00eda e ilustraci\u00f3n aqu\u00ed mismo, o entra en proyectos completos de dise\u00f1o y desarrollo.",
+      tag_gallery:"Galer\u00eda abajo", tag_project:"Proyectos",
+      view_gallery:"Ver galer\u00eda", full_portfolio:"Portafolio completo", view_projects:"Ver proyectos",
+      photo_h3:"Fotograf\u00eda", photo_p:"Retratos, productos y lugares. Luz, textura y un ojo atento al momento.",
+      illu_h3:"Ilustraci\u00f3n", illu_p:"Trazos a mano, personajes y trabajo editorial con personalidad y juego.",
+      design_h3:"Dise\u00f1o", design_p:"Sistemas de marca, composici\u00f3n e interfaces. Pensados, \u00fatiles y hechos para durar.",
+      dev_h3:"Desarrollo", dev_p:"Sitios y peque\u00f1as apps que se sienten tan bien como se ven. De la idea a publicado.",
+      contact_kicker:"Cont\u00e1ctame", contact_h2:"Hagamos<br>algo juntos.",
+      contact_p:"Encargos, colaboraciones y preguntas con curiosidad son siempre bienvenidos. Cu\u00e9ntame qu\u00e9 tienes en mente y veamos a d\u00f3nde llega.",
+      contact_elsewhere:"Encu\u00e9ntrame en redes",
+      social_kicker:"S\u00edgueme", social_studio:"El estudio", social_divider:"o sigue una disciplina en particular",
+      social_photo:"Fotograf\u00eda", social_illu:"Ilustraci\u00f3n",
+      about_who:"Un estudio movido<br>por la <span class=\"hl\">curiosidad</span><br>y la dedicaci\u00f3n.",
+      about_p1:"alejero.studio es una pr\u00e1ctica multidisciplinaria que abarca fotograf\u00eda, ilustraci\u00f3n, dise\u00f1o y desarrollo. El hilo que une todo es el cuidado: poner intenci\u00f3n real en cada proyecto, cuidar los detalles y mantener el sentido del juego.",
+      about_p2:"Ya sea una sola imagen, una marca completa o un sitio hecho desde cero, el trabajo empieza con una idea real y termina con algo a lo que te enorgullece poner tu nombre.",
+      foot_disciplines:"Fotograf\u00eda \u00b7 Ilustraci\u00f3n \u00b7 Dise\u00f1o \u00b7 Desarrollo",
+      _title:"alejero.studio \u00b7 Fotograf\u00eda, ilustraci\u00f3n, dise\u00f1o y desarrollo"
+    }
+  };
+  function applyLang(lang){
+    var dict = i18n[lang]; if(!dict){ return; }
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var v = dict[el.getAttribute('data-i18n')];
+      if(v==null){ return; }
+      if(v.indexOf('<')>-1){ el.innerHTML = v; } else { el.textContent = v; }
+    });
+    document.documentElement.lang = lang;
+    if(dict._title){ document.title = dict._title; }
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang')===lang);
+    });
+  }
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+  });
+
+  // language toggle tucks away on scroll to declutter, returns at the top
+  var langPill = document.querySelector('.lang-fixed');
+  if(langPill){
+    var tuck = function(){ langPill.classList.toggle('tucked', window.scrollY > 40); };
+    window.addEventListener('scroll', tuck, {passive:true});
+    tuck();
+  }
+</script>
+</body>
+</html>
