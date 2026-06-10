@@ -189,8 +189,8 @@
   .btn:hover .arrow{transform:translate(3px,-3px)}
 
   /* hero logo card */
-  .hero-card{padding:46px;display:grid;place-items:center;aspect-ratio:1/1;max-width:440px;margin:0 auto;width:100%}
-  .hero-card img{width:80%;height:auto;display:block;animation:floaty 7s ease-in-out infinite}
+  .hero-card{padding:24px;display:grid;place-items:center;aspect-ratio:1/1;max-width:440px;margin:0 auto;width:100%}
+  .hero-card img{width:94%;height:auto;display:block;animation:floaty 7s ease-in-out infinite}
   @keyframes floaty{50%{transform:translateY(-12px) rotate(-1deg)}}
 
   /* ---------- section heads ---------- */
@@ -354,7 +354,7 @@
         </div>
       </div>
       <div class="hero-card glass load d3">
-        <img src="assets/alejerostudio-black-logo.png" alt="alejero.studio" />
+        <img id="heroLogo" src="assets/alejerostudio-animated.webp" alt="alejero.studio" />
       </div>
     </div>
   </header>
@@ -673,3 +673,16 @@
 </script>
 </body>
 </html>
+
+<script>
+  (function(){
+    var logo = document.getElementById('heroLogo');
+    if(!logo) return;
+    var base = 'assets/alejerostudio-animated.webp';
+    var replay = function(){ logo.src = base + '?t=' + Date.now(); };
+    replay();                                   // fresh play on every load/refresh
+    window.addEventListener('pageshow', function(e){
+      if(e.persisted) replay();                 // also replay when restored from back/forward cache
+    });
+  })();
+</script>
