@@ -1,0 +1,37 @@
+# alejero.studio Cloudflare Worker
+# Serves:
+#   alejero.studio / www.alejero.studio        -> existing portfolio homepage (static asset)
+#   invitations.alejero.studio                 -> invitations product landing page
+#   invites-demo.alejero.studio                -> invite-type picker
+#   {slug}.invitations.alejero.studio          -> customer event invite (D1 tenant lookup)
+#
+# Routing lesson: use zone_name Routes for ALL hostnames -- NOT custom_domain = true.
+# Exact-Route specificity reliably beats the wildcard Route; Custom Domains did not
+# take expected precedence over wildcard Routes in practice (babyshower2026 incident).
+
+name = "alejero-studio"
+compatibility_date = "2026-06-29"
+main = "src/index.js"
+workers_dev = true
+
+routes = [
+  { pattern = "alejero.studio/*",                      zone_name = "alejero.studio" },
+  { pattern = "www.alejero.studio/*",                  zone_name = "alejero.studio" },
+  { pattern = "invitations.alejero.studio/*",          zone_name = "alejero.studio" },
+  { pattern = "invites-demo.alejero.studio/*",         zone_name = "alejero.studio" },
+  { pattern = "*.alejero.studio/*",                    zone_name = "alejero.studio" }
+]
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = true
+
+[[services]]
+binding = "TURNSTILE_VERIFY"
+service = "turnstile-siteverify-delafam"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "delafam-platform-db"
+database_id = "e77d8a56-f6b1-49c3-9797-3116e2b54d73"
