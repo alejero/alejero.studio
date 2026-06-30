@@ -6,7 +6,7 @@
 # The invitations product (invitations.alejero.studio, invites-demo.alejero.studio,
 # and {slug}.alejero.studio) is managed by the separate invitations-alejero-studio Worker.
 
-name = "alejero-studio"
+name = "alejerostudio"
 compatibility_date = "2026-06-29"
 main = "src/index.js"
 workers_dev = true
