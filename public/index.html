@@ -245,6 +245,16 @@
   .g-illu .tile:nth-child(5){background:linear-gradient(135deg,var(--peach),var(--blush))}
   .g-illu .tile:nth-child(6){background:linear-gradient(135deg,var(--sky),var(--coral))}
 
+  /* project cards (dev offer) */
+  .gallery.g-dev{grid-template-columns:repeat(3,1fr)}
+  .gallery.g-dev.open{max-height:200px}
+  .proj-card{display:flex;flex-direction:column;gap:4px;border-radius:14px;border:1px solid var(--glass-stroke-dark);background:rgba(255,255,255,.5);padding:16px 14px;text-decoration:none;color:var(--ink);transition:.25s;}
+  a.proj-card:hover{transform:translateY(-3px);box-shadow:var(--glass-shadow);}
+  .proj-name{font-family:var(--display);font-weight:600;font-size:.88rem;}
+  .proj-desc{font-size:.78rem;color:var(--ink-soft);flex:1;}
+  .proj-arrow{font-size:.82rem;color:var(--ink-soft);margin-top:8px;align-self:flex-end;}
+  .proj-soon{opacity:.55;cursor:default;}
+
   /* ---------- contact ---------- */
   .contact{padding:90px 0}
   .contact-card{padding:clamp(34px,5vw,64px);text-align:center}
@@ -434,20 +444,34 @@
           </div>
         </article>
 
-        <!-- DEVELOPMENT - links out -->
+        <!-- DEVELOPMENT - inline projects -->
         <article class="offer glass">
           <div class="offer-top">
             <div class="offer-ico">
               <svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/></svg>
             </div>
-            <span class="offer-tag" data-i18n="tag_project">Project page</span>
+            <span class="offer-tag" data-i18n="tag_projects">Projects below</span>
           </div>
           <h3 data-i18n="dev_h3">Development</h3>
           <p data-i18n="dev_p">Sites and small apps that feel as good as they look. From idea to shipped.</p>
           <div class="offer-action">
-            <a class="offer-link" href="https://alejero.com" target="_blank" rel="noopener"><span data-i18n="view_projects">View projects</span> <span class="ar">↗</span></a>
-            <span class="sep"></span>
-            <a class="offer-link" href="https://invitations.alejero.studio" target="_blank" rel="noopener"><span data-i18n="invitations_link">Invitations</span> <span class="ar">↗</span></a>
+            <button class="offer-link inline" data-gallery="g-dev" aria-expanded="false"><span data-i18n="view_projects">View projects</span> <span class="ar">↓</span></button>
+          </div>
+          <div class="gallery g-dev">
+            <a class="proj-card" href="https://alejero.com" target="_blank" rel="noopener">
+              <div class="proj-name">alejero.com</div>
+              <div class="proj-desc" data-i18n="proj_alejero_desc">Personal site</div>
+              <span class="proj-arrow">↗</span>
+            </a>
+            <a class="proj-card" href="https://invitations.alejero.studio" target="_blank" rel="noopener">
+              <div class="proj-name">Invitations</div>
+              <div class="proj-desc" data-i18n="proj_inv_desc">Digital event invites</div>
+              <span class="proj-arrow">↗</span>
+            </a>
+            <div class="proj-card proj-soon">
+              <div class="proj-name">Sorvo.app</div>
+              <div class="proj-desc" data-i18n="proj_sorvo_desc">Coming soon</div>
+            </div>
           </div>
         </article>
 
@@ -609,7 +633,8 @@
       illu_h3:"Illustration", illu_p:"Hand-drawn marks, characters and editorial work with personality and play.",
       design_h3:"Design", design_p:"Brand systems, layouts and interfaces. Considered, useful, and built to last.",
       dev_h3:"Development", dev_p:"Sites and small apps that feel as good as they look. From idea to shipped.",
-      invitations_link:"Invitations",
+      tag_projects:"Projects below",
+      proj_alejero_desc:"Personal site", proj_inv_desc:"Digital event invites", proj_sorvo_desc:"Coming soon",
       contact_kicker:"Get in touch", contact_h2:"Let's make<br>something together.",
       contact_p:"Commissions, collaborations and curious questions all welcome. Tell me what you have in mind and let's see where it goes.",
       contact_elsewhere:"Find me elsewhere",
@@ -636,7 +661,8 @@
       illu_h3:"Ilustraci\u00f3n", illu_p:"Trazos a mano, personajes y trabajo editorial con personalidad y juego.",
       design_h3:"Dise\u00f1o", design_p:"Sistemas de marca, composici\u00f3n e interfaces. Pensados, \u00fatiles y hechos para durar.",
       dev_h3:"Desarrollo", dev_p:"Sitios y peque\u00f1as apps que se sienten tan bien como se ven. De la idea a publicado.",
-      invitations_link:"Invitaciones",
+      tag_projects:"Proyectos abajo",
+      proj_alejero_desc:"Sitio personal", proj_inv_desc:"Invitaciones digitales", proj_sorvo_desc:"Pr\u00f3ximamente",
       contact_kicker:"Cont\u00e1ctame", contact_h2:"Hagamos<br>algo juntos.",
       contact_p:"Encargos, colaboraciones y preguntas con curiosidad son siempre bienvenidos. Cu\u00e9ntame qu\u00e9 tienes en mente y veamos a d\u00f3nde llega.",
       contact_elsewhere:"Encu\u00e9ntrame en redes",
