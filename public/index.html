@@ -3,715 +3,675 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>alejero.studio · Photography, illustration, design &amp; development</title>
+<title>alejerostudio · photography, illustration, design, development</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#FFF8EF">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="description" content="I photograph, draw, design and build. Photography from Bahia de Kino to New York, fan illustration, identity work and small fast websites." />
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alejero.studio/">
-<meta property="og:title" content="alejero.studio">
-<meta property="og:description" content="A multi-disciplinary creative studio working across photography, illustration, design, and development.">
+<meta property="og:title" content="alejerostudio">
+<meta property="og:description" content="I photograph, draw, design and build. One person, four habits.">
 <meta property="og:image" content="https://alejero.studio/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="alejero.studio. Where ideas get made, with intention.">
+<meta property="og:image:alt" content="alejerostudio">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="alejero.studio">
-<meta name="twitter:description" content="A multi-disciplinary creative studio working across photography, illustration, design, and development.">
+<meta name="twitter:title" content="alejerostudio">
+<meta name="twitter:description" content="I photograph, draw, design and build. One person, four habits.">
 <meta name="twitter:image" content="https://alejero.studio/og-image.png">
-<meta name="description" content="alejero.studio is a multi-disciplinary studio working across photography, illustration, design and development." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..700&family=Newsreader:opsz,wght@6..72,300..700&family=Sometype+Mono:wght@400..700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --paper:#FFF8EF;
-    --ink:#1B1714;
-    --ink-soft:#5A5048;
-    --coral:#FF7A59;
-    --peach:#FFC894;
-    --butter:#FFE39A;
-    --blush:#FFB3B8;
-    --sky:#9FDBD3;
-    --lilac:#CDBDF5;
+    --paper:#FFFFFF;
+    --ink:#111111;
+    --ink-soft:#565656;
+    --accent:#4A2E7A;
+    --accent-soft:#EEEBFA;
+    --line:rgba(0,0,0,.15);
+    --line-soft:rgba(0,0,0,.09);
 
-    --glass-fill:rgba(255,255,255,0.42);
-    --glass-fill-strong:rgba(255,255,255,0.62);
-    --glass-stroke:rgba(255,255,255,0.65);
-    --glass-stroke-dark:rgba(27,23,20,0.08);
-    --glass-shadow:0 18px 50px -16px rgba(80,45,20,0.30);
-    --glass-shadow-lift:0 30px 70px -18px rgba(80,45,20,0.42);
+    --display:"Newsreader", Georgia, "Times New Roman", serif;
+    --body:"Familjen Grotesk", system-ui, -apple-system, sans-serif;
+    --mono:"Sometype Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-    --radius:30px;
-    --radius-sm:20px;
-    --display:"Shantell Sans", system-ui, sans-serif;
-    --body:"Hanken Grotesk", system-ui, sans-serif;
-    --maxw:1180px;
+    --maxw:1240px;
+    --gut:clamp(20px, 4vw, 56px);
+    --proj-bleed:clamp(12px, 2.8vw, 40px);
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{
     font-family:var(--body);
-    color:var(--ink);
     background:var(--paper);
-    line-height:1.5;
+    color:var(--ink);
+    font-size:17px;
+    line-height:1.55;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-    position:relative;
-    min-height:100vh;
+    text-rendering:optimizeLegibility;
+    font-optical-sizing:auto;
   }
+  img,video{display:block;max-width:100%;height:auto}
+  a{color:inherit}
 
-  /* ---------- warm gradient atmosphere + blobs ---------- */
-  .bg{position:fixed;inset:0;z-index:-2;overflow:hidden}
-  .bg::before{
-    content:"";position:absolute;inset:0;
-    background:
-      radial-gradient(120% 90% at 12% 8%, var(--butter) 0%, transparent 48%),
-      radial-gradient(120% 100% at 88% 4%, var(--blush) 0%, transparent 46%),
-      radial-gradient(130% 120% at 50% 100%, var(--peach) 0%, transparent 60%),
-      var(--paper);
-  }
-  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;mix-blend-mode:multiply;will-change:transform}
-  .blob.b1{width:46vw;height:46vw;left:-8vw;top:-6vw;background:var(--coral);animation:drift1 22s ease-in-out infinite}
-  .blob.b2{width:40vw;height:40vw;right:-6vw;top:6vw;background:var(--lilac);animation:drift2 26s ease-in-out infinite}
-  .blob.b3{width:50vw;height:50vw;left:24vw;bottom:-18vw;background:var(--sky);opacity:.5;animation:drift3 30s ease-in-out infinite}
-  @keyframes drift1{50%{transform:translate(8vw,6vh) scale(1.08)}}
-  @keyframes drift2{50%{transform:translate(-6vw,8vh) scale(1.06)}}
-  @keyframes drift3{50%{transform:translate(5vw,-6vh) scale(1.1)}}
-
-  /* grain */
-  .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
   @media (prefers-reduced-motion: reduce){
-    .blob{animation:none!important}
     html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   }
 
-  /* ---------- liquid glass ---------- */
-  .glass{
-    position:relative;
-    background:var(--glass-fill);
-    backdrop-filter:blur(22px) saturate(180%);
-    -webkit-backdrop-filter:blur(22px) saturate(180%);
-    border:1px solid var(--glass-stroke);
-    border-radius:var(--radius);
-    box-shadow:var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 1px rgba(27,23,20,.04);
-    overflow:hidden;
-  }
-  /* specular sheen */
-  .glass::before{
-    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-    background:linear-gradient(135deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 38%);
-    mix-blend-mode:screen;
-  }
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
 
-  /* ---------- layout ---------- */
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-  section{position:relative;z-index:1}
+  /* ---------- shared type ---------- */
+  .label{
+    font-family:var(--mono);font-size:.68rem;font-weight:500;
+    text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft);
+  }
+  .display{
+    font-family:var(--display);font-weight:500;
+    line-height:1.0;letter-spacing:-.02em;
+  }
+  .lnk{
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;
+    display:inline-flex;align-items:baseline;gap:.45em;
+    text-decoration:none;color:var(--ink);cursor:pointer;
+    background:none;border:0;padding:0;white-space:nowrap;
+    border-bottom:1px solid var(--line);transition:color .18s, border-color .18s;
+  }
+  .lnk:hover{color:var(--accent);border-color:var(--accent)}
+  .lnk .ar{font-size:.9em}
 
-  /* ---------- nav ---------- */
-  .nav{position:fixed;top:16px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 16px}
-  .nav-inner{
-    display:flex;align-items:center;gap:18px;
-    padding:9px 9px 9px 18px;border-radius:999px;
-    background:var(--glass-fill-strong);
-    backdrop-filter:blur(20px) saturate(180%);
-    -webkit-backdrop-filter:blur(20px) saturate(180%);
-    border:1px solid var(--glass-stroke);
-    box-shadow:var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.7);
+  /* ---------- header ---------- */
+  .site-head{
+    position:sticky;top:0;z-index:50;background:var(--paper);
+    border-bottom:1px solid var(--line-soft);
   }
-  .nav-brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;font-size:1rem;letter-spacing:.2px;text-decoration:none;color:var(--ink)}
-  .nav-brand img{height:26px;width:auto;display:block}
-  .nav-links{display:flex;gap:4px}
-  .nav-links a{
-    text-decoration:none;color:var(--ink-soft);font-size:.86rem;font-weight:600;
-    padding:8px 13px;border-radius:999px;transition:.25s;
+  .head-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px}
+  .brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+  .brand img{height:22px;width:auto}
+  .brand span{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:-.01em}
+  .head-nav{display:flex;align-items:center;gap:26px}
+  .head-nav a{
+    font-family:var(--mono);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;
+    text-decoration:none;color:var(--ink-soft);transition:color .18s;
   }
-  .nav-links a:hover{color:var(--ink);background:rgba(255,255,255,.55)}
-  .nav-cta{
-    text-decoration:none;color:var(--paper);background:var(--ink);
-    font-weight:600;font-size:.86rem;padding:10px 16px;border-radius:999px;transition:.25s;
+  .head-nav a:hover{color:var(--ink)}
+  .head-nav a.contact{color:var(--ink);border-bottom:1px solid var(--accent);padding-bottom:2px}
+  .lang{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.7rem;color:var(--line)}
+  .lang button{
+    font:inherit;background:none;border:0;padding:0;cursor:pointer;
+    color:var(--ink-soft);letter-spacing:.1em;transition:color .18s;
   }
-  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(27,23,20,.5)}
-  .lang-fixed{position:absolute;right:16px;top:50%;transform:translateY(-50%);z-index:60;display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:var(--glass-fill-strong);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--glass-stroke);box-shadow:var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.7);transition:opacity .35s ease, transform .35s ease}
-  .lang-fixed.tucked{opacity:0;transform:translateY(-160%);pointer-events:none}
-  .lang-btn{border:none;background:none;font-family:var(--display);font-weight:600;font-size:.8rem;color:var(--ink-soft);padding:6px 11px;border-radius:999px;cursor:pointer;transition:.2s;line-height:1}
-  .lang-btn.active{background:var(--ink);color:var(--paper)}
-  .lang-btn:not(.active):hover{color:var(--ink)}
-  @media(max-width:760px){.nav-links{display:none}.nav{justify-content:flex-start}}
-  @media(max-width:430px){.nav-brand span{display:none}.nav-inner{gap:10px}}
+  .lang button:hover{color:var(--ink)}
+  .lang button[aria-pressed="true"]{color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--accent);text-decoration-thickness:1.5px}
+  @media(max-width:720px){.head-nav .nlink{display:none}}
 
   /* ---------- hero ---------- */
-  .hero{min-height:100svh;display:flex;align-items:center;padding:140px 0 80px}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:36px;text-align:center}}
-
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;
-    font-size:.95rem;color:var(--ink);padding:8px 16px;border-radius:999px;margin-bottom:22px;
-    background:var(--glass-fill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    border:1px solid var(--glass-stroke);box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
-  }
-  .eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(255,122,89,.22)}
-
+  .hero{padding:clamp(56px,9vw,120px) 0 clamp(56px,8vw,104px);border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(32px,5vw,72px);align-items:center}
   .hero h1{
-    font-family:var(--display);font-weight:600;line-height:1.02;letter-spacing:-.5px;
-    font-size:clamp(2.9rem,7vw,5.4rem);margin-bottom:22px;
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(2.7rem,7.2vw,5.5rem);line-height:.98;letter-spacing:-.028em;
+    max-width:15ch;
   }
-  .hero h1 .mark{position:relative;white-space:nowrap}
-  .hero h1 .mark svg{position:absolute;left:-4%;bottom:-.18em;width:108%;height:.42em;z-index:-1}
-  .hero p.lede{font-size:clamp(1.05rem,1.7vw,1.28rem);color:var(--ink-soft);max-width:30ch;margin-bottom:32px}
-  @media(max-width:880px){.hero p.lede{margin-left:auto;margin-right:auto}}
+  .hero .lede{margin-top:clamp(22px,3vw,32px);max-width:46ch;font-size:clamp(1rem,1.25vw,1.12rem);color:var(--ink-soft)}
+  .hero .rule{margin-top:clamp(28px,4vw,40px);padding-top:18px;border-top:1px solid var(--line-soft)}
+  .disc{display:flex;flex-wrap:wrap;gap:6px 14px}
+  .disc span{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft)}
+  @media(max-width:480px){.disc{gap:4px 10px}.disc span{font-size:.6rem;letter-spacing:.1em}.disc span:not(:last-child)::after{margin-left:10px}}
+  .disc span:not(:last-child)::after{content:"/";margin-left:14px;color:var(--line)}
+  .hero-mark{justify-self:end;width:min(100%,300px)}
+  .hero-mark img{width:100%}
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-mark{justify-self:center;width:min(58%,220px);order:-1}
+  }
 
-  .disciplines{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
-  @media(max-width:880px){.disciplines{justify-content:center}}
-  .chip{font-family:var(--display);font-weight:500;font-size:.9rem;padding:7px 15px;border-radius:999px;
-    background:rgba(255,255,255,.5);border:1px solid var(--glass-stroke-dark)}
-
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-  @media(max-width:880px){.cta-row{justify-content:center}}
-  .btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:1rem;
-    padding:15px 26px;border-radius:999px;transition:.28s cubic-bezier(.2,.8,.2,1);cursor:pointer;border:none}
-  .btn-primary{background:var(--ink);color:var(--paper)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(27,23,20,.55)}
-  .btn-ghost{background:var(--glass-fill-strong);color:var(--ink);border:1px solid var(--glass-stroke);
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--glass-shadow-lift)}
-  .btn .arrow{transition:transform .28s}
-  .btn:hover .arrow{transform:translate(3px,-3px)}
-
-  /* hero logo card */
-  .hero-card{padding:24px;display:grid;place-items:center;aspect-ratio:1/1;max-width:440px;margin:0 auto;width:100%}
-  .hero-card img{width:94%;height:auto;display:block;animation:floaty 7s ease-in-out infinite}
-  @keyframes floaty{50%{transform:translateY(-12px) rotate(-1deg)}}
-
-  /* ---------- section heads ---------- */
-  .sec-head{margin-bottom:40px}
-  .sec-kicker{font-family:var(--display);font-weight:600;color:var(--coral);font-size:1rem;margin-bottom:8px}
-  .sec-title{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4vw,3rem);line-height:1.04;letter-spacing:-.5px}
-  .sec-sub{color:var(--ink-soft);max-width:54ch;margin-top:12px;font-size:1.05rem}
+  /* ---------- section frame ---------- */
+  .sec{padding:clamp(64px,8vw,112px) 0}
+  .sec + .sec{border-top:1px solid var(--line)}
+  .sec-head{margin-bottom:clamp(40px,5vw,64px);max-width:56ch}
+  .sec-head .label{display:block;margin-bottom:14px}
+  .sec-head h2{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.02;letter-spacing:-.022em;
+  }
+  .sec-head p{margin-top:16px;color:var(--ink-soft);max-width:48ch}
 
   /* ---------- work ---------- */
-  .work{padding:90px 0}
-  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-  @media(max-width:760px){.work-grid{grid-template-columns:1fr}}
-  .offer{padding:30px;display:flex;flex-direction:column;min-height:260px;transition:.35s cubic-bezier(.2,.8,.2,1)}
-  .offer:hover{transform:translateY(-6px);box-shadow:var(--glass-shadow-lift)}
-  .offer-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
-  .offer-ico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;flex:0 0 auto;
-    background:rgba(255,255,255,.55);border:1px solid var(--glass-stroke-dark)}
-  .offer-ico svg{width:28px;height:28px;stroke:var(--ink);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .offer-tag{font-family:var(--display);font-weight:500;font-size:.78rem;color:var(--ink-soft);
-    padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.5);border:1px solid var(--glass-stroke-dark);white-space:nowrap}
-  .offer h3{font-family:var(--display);font-weight:600;font-size:1.7rem;margin-bottom:8px}
-  .offer p{color:var(--ink-soft);font-size:.98rem;margin-bottom:auto}
-  .offer-action{margin-top:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-  .offer-action .sep{width:1px;height:15px;background:rgba(27,23,20,.16);display:inline-block}
-  .offer-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);text-decoration:none;cursor:pointer;
-    background:none;border:none;font-family:var(--body);font-size:.98rem;padding:0}
-  .offer-link .ar{transition:transform .28s}
-  .offer-link:hover .ar{transform:translate(3px,-3px)}
-  .offer-link.inline:hover .ar{transform:translateY(3px)}
+  .index{border-top:1px solid var(--line)}
+  .row{border-bottom:1px solid var(--line)}
+  .row-head{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,15rem);
+    gap:clamp(16px,3vw,40px);align-items:start;
+    padding:clamp(30px,4vw,48px) 0;
+  }
+  .row-title{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(1.65rem,3.4vw,2.5rem);line-height:1.05;letter-spacing:-.02em;
+  }
+  .row-desc{margin-top:10px;color:var(--ink-soft);max-width:44ch;font-size:.98rem}
+  .row-side{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-top:.5em}
+  .row-count{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-soft)}
+  @media(min-width:861px){.row-side{align-items:flex-end}}
+  @media(max-width:860px){
+    .row-head{grid-template-columns:minmax(0,1fr)}
+    .row-side{padding-top:6px;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 18px}
+  }
 
-  /* inline gallery */
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px;
-    max-height:0;opacity:0;overflow:hidden;transition:max-height .5s ease, opacity .4s ease, margin-top .4s ease}
-  .gallery.open{max-height:520px;opacity:1}
-  .gallery.g-illu,.gallery.g-photo{grid-template-columns:repeat(2,1fr)}
-  .gallery.g-illu.open,.gallery.g-photo.open{max-height:900px}
-  .gallery .art{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:14px;border:1px solid var(--glass-stroke-dark);background:rgba(255,255,255,.4)}
-  .tile{aspect-ratio:1/1;border-radius:14px;border:1px solid var(--glass-stroke-dark);position:relative;overflow:hidden;
-    display:grid;place-items:center}
-  .tile span{font-family:var(--display);font-size:.72rem;color:rgba(27,23,20,.45);position:relative;z-index:2}
-  /* placeholder swatches - replace each .tile with <img src="..."> */
-  .g-photo .tile:nth-child(1){background:linear-gradient(135deg,var(--peach),var(--coral))}
-  .g-photo .tile:nth-child(2){background:linear-gradient(135deg,var(--sky),var(--lilac))}
-  .g-photo .tile:nth-child(3){background:linear-gradient(135deg,var(--butter),var(--peach))}
-  .g-photo .tile:nth-child(4){background:linear-gradient(135deg,var(--lilac),var(--blush))}
-  .g-photo .tile:nth-child(5){background:linear-gradient(135deg,var(--coral),var(--butter))}
-  .g-photo .tile:nth-child(6){background:linear-gradient(135deg,var(--sky),var(--peach))}
-  .g-illu .tile:nth-child(1){background:linear-gradient(135deg,var(--lilac),var(--sky))}
-  .g-illu .tile:nth-child(2){background:linear-gradient(135deg,var(--blush),var(--butter))}
-  .g-illu .tile:nth-child(3){background:linear-gradient(135deg,var(--coral),var(--lilac))}
-  .g-illu .tile:nth-child(4){background:linear-gradient(135deg,var(--butter),var(--sky))}
-  .g-illu .tile:nth-child(5){background:linear-gradient(135deg,var(--peach),var(--blush))}
-  .g-illu .tile:nth-child(6){background:linear-gradient(135deg,var(--sky),var(--coral))}
 
-  /* project cards (dev offer) */
-  .gallery.g-dev{grid-template-columns:repeat(3,1fr)}
-  .gallery.g-dev.open{max-height:200px}
-  .proj-card{display:flex;flex-direction:column;gap:4px;border-radius:14px;border:1px solid var(--glass-stroke-dark);background:rgba(255,255,255,.5);padding:16px 14px;text-decoration:none;color:var(--ink);transition:.25s;}
-  a.proj-card:hover{transform:translateY(-3px);box-shadow:var(--glass-shadow);}
-  .proj-name{font-family:var(--display);font-weight:600;font-size:.88rem;}
-  .proj-desc{font-size:.78rem;color:var(--ink-soft);flex:1;}
-  .proj-arrow{font-size:.82rem;color:var(--ink-soft);margin-top:8px;align-self:flex-end;}
-  .proj-soon{opacity:.55;cursor:default;}
+  /* ---------- expanding galleries ---------- */
+  .gallery{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.22,.7,.2,1)}
+  .gallery.open{grid-template-rows:1fr}
+  /* overflow:hidden drives the collapse, but it also clips the project-row
+     hover tint. Widen the clip box by the bleed and pull it back so the
+     content box stays put. */
+  .gallery-inner{overflow:hidden;min-height:0;
+    margin-inline:calc(-1 * var(--proj-bleed) - 2px);
+    padding-inline:calc(var(--proj-bleed) + 2px)}
+  .gallery-pad{padding-bottom:clamp(28px,4vw,48px)}
 
-  /* ---------- contact ---------- */
-  .contact{padding:90px 0}
-  .contact-card{padding:clamp(34px,5vw,64px);text-align:center}
-  .contact-card h2{font-family:var(--display);font-weight:600;font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.02;letter-spacing:-.5px;margin-bottom:16px}
-  .contact-card p{color:var(--ink-soft);font-size:1.1rem;max-width:46ch;margin:0 auto 30px}
-  .contact-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.6vw,22px);align-items:start}
+  .cols > div{display:grid;gap:clamp(10px,1.6vw,22px)}
+  .cols > div:nth-child(2){margin-top:clamp(20px,4vw,56px)}
+  .cols > div:nth-child(3){margin-top:clamp(10px,2vw,26px)}
+  .cols figure{margin:0}
+  .cols img,.cols video{width:100%;height:auto;background:rgba(0,0,0,.05)}
+  .cols figcaption{
+    font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.13em;
+    color:var(--ink-soft);margin-top:8px;
+  }
+  @media(max-width:860px){
+    .cols{grid-template-columns:repeat(2,1fr)}
+    .cols > div:nth-child(2){margin-top:clamp(18px,5vw,40px)}
+    .cols > div:nth-child(3){margin-top:0;grid-column:1/-1;grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:520px){
+    .cols{grid-template-columns:1fr}
+    .cols > div:nth-child(2),.cols > div:nth-child(3){margin-top:0;grid-column:auto;grid-template-columns:1fr}
+  }
 
-  /* ---------- social ---------- */
-  .social{padding:44px 0 10px}
-  .social-kick{text-align:center;margin-bottom:24px}
-  .social-groups{display:flex;gap:48px;justify-content:center;flex-wrap:wrap}
-  .social-group{text-align:center}
-  .social-label{display:block;font-family:var(--display);font-weight:600;font-size:1.08rem;margin-bottom:14px;color:var(--ink)}
-  .social-label em{font-style:normal;color:var(--coral)}
-  .social-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .social-feature{margin-bottom:28px;text-align:center}
-  .social-feature .social-label{font-size:1.18rem}
-  .social-pill.lead{background:linear-gradient(135deg, rgba(255,122,89,.18), rgba(255,255,255,.5));border-color:rgba(255,122,89,.42)}
-  .social-pill.lead:hover{box-shadow:0 14px 30px -12px rgba(255,122,89,.5)}
-  .social-divider{display:flex;align-items:center;gap:14px;max-width:380px;margin:0 auto 26px;color:var(--ink-soft);font-family:var(--display);font-weight:500;font-size:.92rem}
-  .social-divider::before,.social-divider::after{content:"";flex:1;height:1px;background:rgba(27,23,20,.14)}
-  .social-pill{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-weight:600;
-    padding:12px 20px;border-radius:999px;transition:.28s;
-    background:var(--glass-fill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    border:1px solid var(--glass-stroke);box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
-  .social-pill:hover{transform:translateY(-3px);box-shadow:var(--glass-shadow)}
-  .social-pill svg{width:19px;height:19px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  /* project list inside development row */
+  .projects{border-top:1px solid var(--line-soft)}
+  .projects .proj:last-child{border-bottom:0}
+  .proj{
+    display:grid;grid-template-columns:minmax(0,7.5rem) minmax(0,1fr) auto;gap:clamp(10px,1.5vw,22px);
+    align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line-soft);
+    text-decoration:none;transition:color .18s;
+  }
+  /* the row element carries the hairline rules, so only the tint bleeds outward;
+     widening the element itself would push those rules past the section rules */
+  .proj{position:relative}
+  .proj > span{position:relative;z-index:1}
+  a.proj::before{content:"";position:absolute;z-index:0;top:0;bottom:0;
+    left:calc(-1 * var(--proj-bleed));right:calc(-1 * var(--proj-bleed));
+    border-radius:3px;background:transparent;transition:background .18s}
+  a.proj:hover::before{background:var(--accent-soft)}
+  a.proj:hover{color:var(--accent)}
+  .proj-name{font-family:var(--mono);font-size:.82rem;letter-spacing:.02em}
+  .proj-desc{color:var(--ink-soft);font-size:.92rem}
+  a.proj:hover .proj-desc{color:inherit}
+  .proj-arrow{font-family:var(--mono);font-size:.75rem;color:var(--ink-soft)}
+  @media(max-width:600px){.proj{grid-template-columns:1fr auto;row-gap:2px}.proj-desc{grid-column:1}}
 
   /* ---------- about ---------- */
-  .about{padding:80px 0 60px}
-  .about-card{padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
-  @media(max-width:760px){.about-card{grid-template-columns:1fr;text-align:center}}
-  .about-card .who{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05;letter-spacing:-.5px}
-  .about-card .who .hl{color:var(--coral)}
-  .about-card p{color:var(--ink-soft);font-size:1.06rem;margin-bottom:14px}
-  .about-card p:last-child{margin-bottom:0}
+  .about-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,80px);align-items:start}
+  .about-grid h2{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(1.9rem,4vw,3rem);line-height:1.03;letter-spacing:-.022em;
+  }
+  .about-body p{max-width:56ch;font-size:1.04rem}
+  .about-body p + p{margin-top:1.1em}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:28px}}
+
+  /* ---------- contact ---------- */
+  .contact h2{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(2.1rem,5.4vw,4.2rem);line-height:1.0;letter-spacing:-.026em;max-width:16ch;
+  }
+  .contact p{margin-top:20px;color:var(--ink-soft);max-width:44ch;font-size:1.04rem}
+  .mailto{
+    display:inline-block;margin-top:clamp(28px,4vw,44px);text-decoration:none;
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(1.35rem,3.6vw,2.4rem);letter-spacing:-.02em;
+    border-bottom:2px solid var(--accent);padding-bottom:.06em;transition:color .2s;
+  }
+  .mailto:hover{color:var(--accent)}
+
+  /* ---------- social ---------- */
+  .socials{border-top:1px solid var(--line)}
+  .soc{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;
+    gap:10px clamp(16px,3vw,32px);align-items:baseline;
+    padding:20px 0;border-bottom:1px solid var(--line);
+  }
+  .soc-name{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ink-soft)}
+  .soc-handle{font-family:var(--display);font-weight:500;font-size:1.15rem;letter-spacing:-.01em}
+  .soc-links{display:flex;gap:18px;flex-wrap:wrap}
+  @media(max-width:640px){
+    .soc{grid-template-columns:1fr}
+    .soc-links{grid-column:1}
+  }
 
   /* ---------- footer ---------- */
-  footer{margin-top:40px;padding:46px 0 60px}
-  .foot-card{padding:38px clamp(28px,5vw,52px);display:flex;flex-direction:column;gap:22px;
-    background:var(--ink);border-radius:var(--radius);color:rgba(255,248,239,.7);position:relative;overflow:hidden}
-  .foot-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative}
-  .foot-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,122,89,.18),transparent 50%)}
-  .foot-brand{display:flex;align-items:center;gap:14px;position:relative}
-  .foot-brand img{height:46px;width:auto}
-  .foot-brand .url{font-family:var(--display);font-weight:600;font-size:1.25rem;color:var(--paper)}
-  .foot-social{display:flex;gap:10px;position:relative}
-  .foot-social a{color:var(--paper);opacity:.82;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,248,239,.25);transition:.25s;text-decoration:none}
-  .foot-social a:hover{opacity:1;background:rgba(255,248,239,.12);transform:translateY(-2px)}
-  .foot-social svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-  .foot-meta{font-size:.9rem;position:relative;text-align:left}
-  .foot-meta a{color:var(--paper);text-decoration:none;font-weight:600}
-  @media(max-width:560px){.foot-top{flex-direction:column;align-items:center;text-align:center}.foot-brand{justify-content:center;flex-wrap:wrap}.foot-social{justify-content:center}.foot-meta{text-align:center}}
-
-  /* reveal on scroll */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1)}
-  .reveal.in{opacity:1;transform:none}
-  .stagger>*{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1)}
-  .stagger.in>*{opacity:1;transform:none}
-  .stagger.in>*:nth-child(2){transition-delay:.08s}
-  .stagger.in>*:nth-child(3){transition-delay:.16s}
-  .stagger.in>*:nth-child(4){transition-delay:.24s}
-
-  /* load-in for hero */
-  .load{opacity:0;transform:translateY(24px);animation:load .8s cubic-bezier(.2,.8,.2,1) forwards}
-  .load.d1{animation-delay:.05s}.load.d2{animation-delay:.18s}.load.d3{animation-delay:.31s}.load.d4{animation-delay:.44s}.load.d5{animation-delay:.57s}
-  @keyframes load{to{opacity:1;transform:none}}
+  footer{background:var(--ink);color:rgba(255,255,255,.62);padding:clamp(44px,6vw,72px) 0 clamp(36px,5vw,56px)}
+  .foot-top{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;
+    padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.16)}
+  .foot-brand{display:flex;align-items:center;gap:12px}
+  .foot-brand img{height:38px;width:auto}
+  .foot-brand span{font-family:var(--display);font-weight:500;font-size:1.3rem;color:var(--paper);letter-spacing:-.01em}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap}
+  .foot-links a{
+    font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;
+    text-decoration:none;color:rgba(255,255,255,.7);transition:color .18s;
+  }
+  .foot-links a:hover{color:var(--paper)}
+  .foot-meta{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:22px;
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+  .foot-meta a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .18s}
+  .foot-meta a:hover{color:var(--paper)}
 </style>
 </head>
 <body>
-  <div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-  <div class="grain"></div>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="nav-brand" href="#top"><img src="assets/alejerostudio-black-logo.png" alt="alejero.studio logo" /><span>alejero.studio</span></a>
-      <div class="nav-links">
-        <a href="#work" data-i18n="nav_work">Work</a>
-        <a href="#about" data-i18n="nav_studio">About</a>
-        <a href="#social" data-i18n="nav_follow">Follow</a>
-      </div>
-      <a class="nav-cta" href="#contact" data-i18n="nav_cta">Get in touch</a>
-    </div>
-    <div class="lang-fixed" role="group" aria-label="Language / Idioma">
-      <button class="lang-btn active" data-lang="en" type="button">EN</button>
-      <button class="lang-btn" data-lang="es" type="button">ES</button>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header id="top" class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow load d1"><span class="dot"></span> <span data-i18n="eyebrow">Creative &amp; development studio</span></span>
-        <h1 class="load d2"><span data-i18n="hero_h1a">Where ideas get </span><span class="mark"><span data-i18n="hero_mark">made</span><svg viewBox="0 0 200 30" preserveAspectRatio="none"><path d="M3 20 C 50 8, 150 8, 197 18" stroke="var(--coral)" stroke-width="7" fill="none" stroke-linecap="round"/></svg></span><span data-i18n="hero_h1b">, with intention.</span></h1>
-        <p class="lede load d3" data-i18n="lede">alejero.studio works across photography, illustration, design and development. One studio, four crafts, made to work together.</p>
-        <div class="disciplines load d4">
-          <span class="chip" data-i18n="chip_photo">Photography</span>
-          <span class="chip" data-i18n="chip_illu">Illustration</span>
-          <span class="chip" data-i18n="chip_design">Design</span>
-          <span class="chip" data-i18n="chip_dev">Development</span>
-        </div>
-        <div class="cta-row load d5">
-          <a class="btn btn-primary" href="#work"><span data-i18n="cta_work">See the work</span> <span class="arrow">↗</span></a>
-          <a class="btn btn-ghost" href="#contact" data-i18n="cta_project">Start a project</a>
-        </div>
-      </div>
-      <div class="hero-card glass load d3">
-        <img id="heroLogo" src="assets/alejerostudio-animated.webp" alt="alejero.studio" />
-      </div>
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="#top">
+        <img src="assets/alejerostudio-black-logo.png" alt="" width="120" height="120" />
+        <span>alejerostudio</span>
+      </a>
+      <nav class="head-nav">
+        <a class="nlink" href="#work" data-i18n="nav_work">Work</a>
+        <a class="nlink" href="#about" data-i18n="nav_about">About</a>
+        <a class="nlink" href="#follow" data-i18n="nav_follow">Follow</a>
+        <a class="contact" href="#contact" data-i18n="nav_contact">Contact</a>
+        <span class="lang" role="group" aria-label="Language / Idioma">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>/<button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </span>
+      </nav>
     </div>
   </header>
 
-  <!-- WORK -->
-  <section id="work" class="work">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-kicker" data-i18n="work_kicker">The work</div>
-        <h2 class="sec-title" data-i18n="work_title">Four crafts, one studio.</h2>
-        <p class="sec-sub" data-i18n="work_sub">Browse photography and illustration right here, or jump into full design and development projects.</p>
-      </div>
+  <main id="top">
 
-      <div class="work-grid stagger">
-
-        <!-- PHOTOGRAPHY - inline -->
-        <article class="offer glass">
-          <div class="offer-top">
-            <div class="offer-ico">
-              <svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.2-2h7.6L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="13" cy="12" r="3.4"/></svg>
-            </div>
-            <span class="offer-tag" data-i18n="tag_gallery">Gallery below</span>
-          </div>
-          <h3 data-i18n="photo_h3">Photography</h3>
-          <p data-i18n="photo_p">Portraits, products and places. Light, texture and a quiet eye for the moment.</p>
-          <div class="offer-action">
-            <button class="offer-link inline" data-gallery="g-photo" aria-expanded="false"><span data-i18n="view_gallery">View gallery</span> <span class="ar">↓</span></button>
-            <span class="sep"></span>
-            <a class="offer-link" href="https://alejerophoto.com" target="_blank" rel="noopener"><span data-i18n="full_portfolio">Full portfolio</span> <span class="ar">↗</span></a>
-          </div>
-          <div class="gallery g-photo">
-            <img class="art" style="object-position:center 62%" src="assets/alejerophoto/images/chente-in-kino.jpg" alt="Golden retriever on the beach at sunset" />
-            <img class="art" style="object-position:center 30%" src="assets/alejerophoto/images/radio-city-blurred.jpg" alt="Radio City Music Hall neon sign at night" />
-            <img class="art" style="object-position:center 62%" src="assets/alejerophoto/images/porsche-in-snowy-nyc.jpg" alt="Vintage Porsche on a snowy New York street" />
-            <img class="art" src="assets/alejerophoto/images/cozy-chente.jpg" alt="Golden retriever resting cozily indoors" />
-            <img class="art" style="object-position:center 55%" src="assets/alejerophoto/images/dramatic-seagull-kino.jpg" alt="Seagull in flight over the ocean at dusk" />
-            <img class="art" style="object-position:center 60%" src="assets/alejerophoto/images/porsche-with-mountain.jpg" alt="Porsche Carrera RS with desert mountains behind" />
-          </div>
-        </article>
-
-        <!-- ILLUSTRATION - inline -->
-        <article class="offer glass">
-          <div class="offer-top">
-            <div class="offer-ico">
-              <svg viewBox="0 0 24 24"><path d="M15.5 4.5l4 4L8 20l-4.5.5L4 16z"/><path d="M13.5 6.5l4 4"/></svg>
-            </div>
-            <span class="offer-tag" data-i18n="tag_gallery">Gallery below</span>
-          </div>
-          <h3 data-i18n="illu_h3">Illustration</h3>
-          <p data-i18n="illu_p">Hand-drawn marks, characters and editorial work with personality and play.</p>
-          <div class="offer-action">
-            <button class="offer-link inline" data-gallery="g-illu" aria-expanded="false"><span data-i18n="view_gallery">View gallery</span> <span class="ar">↓</span></button>
-          </div>
-          <div class="gallery g-illu">
-            <img class="art" src="assets/alejerodraw/images/harry-potter-lumos.jpg" alt="Illustration of Harry Potter casting Lumos" />
-            <video class="art" style="object-position:center 100%" autoplay loop muted playsinline preload="metadata"><source src="assets/alejerodraw/videos/chewie-millenium-falcon.MP4" type="video/mp4"></video>
-            <img class="art" style="object-position:center 100%" src="assets/alejerodraw/images/mustang-1976.jpg" alt="Illustration of a 1976 Mustang at an intersection" />
-            <img class="art" src="assets/alejerodraw/images/mario-luigi-brothership.jpg" alt="Illustration of Mario and Luigi on a small island" />
-            <video class="art" autoplay loop muted playsinline preload="metadata"><source src="assets/alejerodraw/videos/bulbasaur-earth-day.MP4" type="video/mp4"></video>
-            <img class="art" style="object-position:center 80%" src="assets/alejerodraw/images/riolu-running-field.jpg" alt="Illustration of Riolu resting in a field" />
-          </div>
-        </article>
-
-        <!-- DESIGN - links out -->
-        <article class="offer glass">
-          <div class="offer-top">
-            <div class="offer-ico">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
-            </div>
-            <span class="offer-tag" data-i18n="tag_project">Project page</span>
-          </div>
-          <h3 data-i18n="design_h3">Design</h3>
-          <p data-i18n="design_p">Brand systems, layouts and interfaces. Considered, useful, and built to last.</p>
-          <div class="offer-action">
-            <!-- design portfolio -->
-            <a class="offer-link" href="https://alejero.com" target="_blank" rel="noopener"><span data-i18n="view_projects">View projects</span> <span class="ar">↗</span></a>
-          </div>
-        </article>
-
-        <!-- DEVELOPMENT - inline projects -->
-        <article class="offer glass">
-          <div class="offer-top">
-            <div class="offer-ico">
-              <svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/></svg>
-            </div>
-            <span class="offer-tag" data-i18n="tag_projects">Projects below</span>
-          </div>
-          <h3 data-i18n="dev_h3">Development</h3>
-          <p data-i18n="dev_p">Sites and small apps that feel as good as they look. From idea to shipped.</p>
-          <div class="offer-action">
-            <button class="offer-link inline" data-gallery="g-dev" aria-expanded="false"><span data-i18n="view_projects">View projects</span> <span class="ar">↓</span></button>
-          </div>
-          <div class="gallery g-dev">
-            <a class="proj-card" href="https://alejero.com" target="_blank" rel="noopener">
-              <div class="proj-name">alejero.com</div>
-              <div class="proj-desc" data-i18n="proj_alejero_desc">Personal site</div>
-              <span class="proj-arrow">↗</span>
-            </a>
-            <a class="proj-card" href="https://invitations.alejero.studio" target="_blank" rel="noopener">
-              <div class="proj-name">Invitations</div>
-              <div class="proj-desc" data-i18n="proj_inv_desc">Digital event invites</div>
-              <span class="proj-arrow">↗</span>
-            </a>
-            <div class="proj-card proj-soon">
-              <div class="proj-name">Sorvo.app</div>
-              <div class="proj-desc" data-i18n="proj_sorvo_desc">Coming soon</div>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <div class="contact-card glass reveal">
-        <div class="sec-kicker" data-i18n="contact_kicker">Get in touch</div>
-        <h2 data-i18n="contact_h2">Let's make<br>something together.</h2>
-        <p data-i18n="contact_p">Commissions, collaborations and curious questions all welcome. Tell me what you have in mind and let's see where it goes.</p>
-        <div class="contact-cta">
-          <a class="btn btn-primary" href="mailto:hello@alejero.studio">hello@alejero.studio <span class="arrow">↗</span></a>
-          <a class="btn btn-ghost" href="#social" data-i18n="contact_elsewhere">Find me elsewhere</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIAL -->
-  <section id="social" class="social">
-    <div class="wrap">
-      <div class="reveal">
-        <div class="sec-kicker social-kick" data-i18n="social_kicker">Follow along</div>
-
-        <div class="social-feature">
-          <span class="social-label"><span data-i18n="social_studio">The studio</span> <em>@alejerostudio</em></span>
-          <div class="social-row">
-            <a class="social-pill lead" href="https://www.instagram.com/alejerostudio/" target="_blank" rel="noopener" title="Instagram">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--ink)" stroke="none"/></svg>
-              Instagram
-            </a>
-            <a class="social-pill lead" href="https://www.threads.com/@alejerostudio" target="_blank" rel="noopener" title="Threads">
-              <svg viewBox="0 0 24 24" style="fill:var(--ink);stroke:none"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
-              Threads
-            </a>
-          </div>
-        </div>
-
-        <div class="social-divider" data-i18n="social_divider">or follow a single craft</div>
-
-        <div class="social-groups">
-
-          <div class="social-group">
-            <span class="social-label"><span data-i18n="social_photo">Photography</span> <em>@alejerophoto</em></span>
-            <div class="social-row">
-              <a class="social-pill" href="https://www.instagram.com/alejerophoto/" target="_blank" rel="noopener" title="Instagram">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--ink)" stroke="none"/></svg>
-                Instagram
-              </a>
-              <a class="social-pill" href="https://www.threads.com/@alejerophoto" target="_blank" rel="noopener" title="Threads">
-                <svg viewBox="0 0 24 24" style="fill:var(--ink);stroke:none"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
-                Threads
-              </a>
-            </div>
-          </div>
-
-          <div class="social-group">
-            <span class="social-label"><span data-i18n="social_illu">Illustration</span> <em>@alejerodraw</em></span>
-            <div class="social-row">
-              <a class="social-pill" href="https://www.instagram.com/alejerodraw/" target="_blank" rel="noopener" title="Instagram">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--ink)" stroke="none"/></svg>
-                Instagram
-              </a>
-              <a class="social-pill" href="https://www.threads.com/@alejerodraw" target="_blank" rel="noopener" title="Threads">
-                <svg viewBox="0 0 24 24" style="fill:var(--ink);stroke:none"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
-                Threads
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <div class="wrap">
-      <div class="about-card glass reveal">
-        <div class="who" data-i18n="about_who">A studio run<br>on <span class="hl">curiosity</span><br>and craft.</div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
         <div>
-          <p data-i18n="about_p1">alejero.studio is a multi-disciplinary practice spanning photography, illustration, design and development. The thread through all of it is care: bringing real intention to every project, getting the details right, and keeping a sense of play.</p>
-          <p data-i18n="about_p2">Whether it's a single image, a full brand, or a site built from scratch, the work starts with a real idea and ends with something you're proud to put your name on.</p>
+          <h1 data-i18n="hero_h1">I photograph, draw, design and build.</h1>
+          <p class="lede" data-i18n="hero_lede">Everything on this site is mine. The pictures, the drawings, the layouts and the code. Some of it was commissioned. Most of it started because something looked good and I wanted to keep it.</p>
+          <div class="rule">
+            <div class="disc">
+              <span data-i18n="disc_photo">Photography</span>
+              <span data-i18n="disc_illu">Illustration</span>
+              <span data-i18n="disc_design">Design</span>
+              <span data-i18n="disc_dev">Development</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-mark">
+          <img src="assets/alejerostudio-animated.webp" alt="alejerostudio" width="640" height="640" />
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+    <!-- WORK -->
+    <section id="work" class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label" data-i18n="work_label">Work</span>
+          <h2 data-i18n="work_h2">What I make.</h2>
+          <p data-i18n="work_p">Photography and illustration open right here. Design and development live on their own sites.</p>
+        </div>
+
+        <div class="index">
+
+          <!-- PHOTOGRAPHY -->
+          <article class="row">
+            <div class="row-head">
+              <div>
+                <h3 class="row-title" data-i18n="photo_h3">Photography</h3>
+                <p class="row-desc" data-i18n="photo_p">Dogs, cars and coastlines. Bahía de Kino to Midtown, almost always in whatever light was already there.</p>
+              </div>
+              <div class="row-side">
+                <span class="row-count" data-i18n="photo_count">6 images</span>
+                <button class="lnk" type="button" data-gallery="g-photo" aria-expanded="false" aria-controls="g-photo" data-close="close_gallery">
+                  <span data-i18n="open_gallery">Open gallery</span><span class="ar" aria-hidden="true">↓</span>
+                </button>
+                <a class="lnk" href="https://alejerophoto.com" target="_blank" rel="noopener">alejerophoto.com<span class="ar" aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <div class="gallery" id="g-photo">
+              <div class="gallery-inner"><div class="gallery-pad cols">
+                <div>
+                  <figure><img src="assets/alejerophoto/images/chente-in-kino.jpg" alt="Chente, a golden retriever on a leash, looking back at the camera while someone photographs the sunset over the water" width="933" height="1400" loading="lazy" decoding="async"><figcaption data-i18n="cap_pets_kino">Pets · Bahía de Kino</figcaption></figure>
+                  <figure><img src="assets/alejerophoto/images/cozy-chente.jpg" alt="Chente curled up on a cushion indoors, resting his head on the edge" width="933" height="1400" loading="lazy" decoding="async"><figcaption data-i18n="cap_pets_home">Pets · Home</figcaption></figure>
+                </div>
+                <div>
+                  <figure><img src="assets/alejerophoto/images/radio-city-blurred.jpg" alt="The Radio City Music Hall marquee at night, its neon pulled into streaks" width="933" height="1400" loading="lazy" decoding="async"><figcaption data-i18n="cap_night_ny">Night · New York</figcaption></figure>
+                  <figure><img src="assets/alejerophoto/images/dramatic-seagull-kino.jpg" alt="A gull gliding low over the shallows at dusk, an island on the horizon" width="933" height="1400" loading="lazy" decoding="async"><figcaption data-i18n="cap_wild_kino">Wildlife · Bahía de Kino</figcaption></figure>
+                </div>
+                <div>
+                  <figure><img src="assets/alejerophoto/images/porsche-in-snowy-nyc.jpg" alt="A bronze early Porsche 911 with a roof rack and driving lights, parked head-on in a snowbanked Manhattan street" width="933" height="1400" loading="lazy" decoding="async"><figcaption data-i18n="cap_auto_ny">Automotive · New York</figcaption></figure>
+                  <figure><img src="assets/alejerophoto/images/porsche-with-mountain.jpg" alt="The ducktail spoiler and Arizona plate of a red Porsche 911 Carrera RS, mountains behind" width="933" height="1400" loading="lazy" decoding="async"><figcaption data-i18n="cap_auto_az">Automotive · Arizona</figcaption></figure>
+                </div>
+              </div></div>
+            </div>
+          </article>
+
+          <!-- ILLUSTRATION -->
+          <article class="row">
+            <div class="row-head">
+              <div>
+                <h3 class="row-title" data-i18n="illu_h3">Illustration</h3>
+                <p class="row-desc" data-i18n="illu_p">Fan drawings, mostly. Pokémon, Star Wars, Nintendo and a 1976 Mustang. A couple of them move.</p>
+              </div>
+              <div class="row-side">
+                <span class="row-count" data-i18n="illu_count">6 pieces</span>
+                <button class="lnk" type="button" data-gallery="g-illu" aria-expanded="false" aria-controls="g-illu" data-close="close_gallery">
+                  <span data-i18n="open_gallery">Open gallery</span><span class="ar" aria-hidden="true">↓</span>
+                </button>
+                <a class="lnk" href="https://www.instagram.com/alejerodraw/" target="_blank" rel="noopener">@alejerodraw<span class="ar" aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <div class="gallery" id="g-illu">
+              <div class="gallery-inner"><div class="gallery-pad cols">
+                <div>
+                  <figure><img src="assets/alejerodraw/images/harry-potter-lumos.jpg" alt="Harry Potter casting Lumos, wand lit in the dark" width="1400" height="1400" loading="lazy" decoding="async"><figcaption>Lumos</figcaption></figure>
+                  <figure><img src="assets/alejerodraw/images/mustang-1976.jpg" alt="A 1976 Mustang waiting at an intersection" width="788" height="1400" loading="lazy" decoding="async"><figcaption>Mustang, 1976</figcaption></figure>
+                </div>
+                <div>
+                  <figure>
+                    <video autoplay loop muted playsinline preload="metadata" width="720" height="1280" aria-label="Animated drawing of Chewbacca flying the Millennium Falcon">
+                      <source src="assets/alejerodraw/videos/chewie-millenium-falcon.MP4" type="video/mp4">
+                    </video>
+                    <figcaption>Millennium Falcon</figcaption>
+                  </figure>
+                  <figure><img src="assets/alejerodraw/images/mario-luigi-brothership.jpg" alt="Mario and Luigi standing on a small island" width="1400" height="1400" loading="lazy" decoding="async"><figcaption>Brothership</figcaption></figure>
+                </div>
+                <div>
+                  <figure>
+                    <video autoplay loop muted playsinline preload="metadata" width="720" height="1278" aria-label="Animated drawing of Bulbasaur for Earth Day">
+                      <source src="assets/alejerodraw/videos/bulbasaur-earth-day.MP4" type="video/mp4">
+                    </video>
+                    <figcaption>Earth Day</figcaption>
+                  </figure>
+                  <figure><img src="assets/alejerodraw/images/riolu-running-field.jpg" alt="Riolu resting in a wide open field" width="788" height="1400" loading="lazy" decoding="async"><figcaption>Riolu</figcaption></figure>
+                </div>
+              </div></div>
+            </div>
+          </article>
+
+          <!-- DESIGN -->
+          <article class="row">
+            <div class="row-head">
+              <div>
+                <h3 class="row-title" data-i18n="design_h3">Design</h3>
+                <p class="row-desc" data-i18n="design_p">Identity, layout and interface. The part where a thing gets decided before it gets made.</p>
+              </div>
+              <div class="row-side">
+                <a class="lnk" href="https://alejero.com" target="_blank" rel="noopener">alejero.com<span class="ar" aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- DEVELOPMENT -->
+          <article class="row">
+            <div class="row-head">
+              <div>
+                <h3 class="row-title" data-i18n="dev_h3">Development</h3>
+                <p class="row-desc" data-i18n="dev_p">Small, fast sites and apps. Every part chosen on purpose, including the parts nobody notices.</p>
+              </div>
+              <div class="row-side">
+                <span class="row-count" data-i18n="dev_count">3 projects</span>
+                <button class="lnk" type="button" data-gallery="g-dev" aria-expanded="false" aria-controls="g-dev" data-close="close_projects">
+                  <span data-i18n="open_projects">Open projects</span><span class="ar" aria-hidden="true">↓</span>
+                </button>
+              </div>
+            </div>
+            <div class="gallery" id="g-dev">
+              <div class="gallery-inner"><div class="gallery-pad">
+                <div class="projects">
+                  <a class="proj" href="https://alejero.com" target="_blank" rel="noopener">
+                    <span class="proj-name">alejero.com</span>
+                    <span class="proj-desc" data-i18n="proj_alejero">My own site, and where the design work lives</span>
+                    <span class="proj-arrow" aria-hidden="true">↗</span>
+                  </a>
+                  <a class="proj" href="https://invitations.alejero.studio" target="_blank" rel="noopener">
+                    <span class="proj-name">invitations</span>
+                    <span class="proj-desc" data-i18n="proj_inv">Digital invitations, one subdomain per event</span>
+                    <span class="proj-arrow" aria-hidden="true">↗</span>
+                  </a>
+                  <a class="proj" href="https://sorvo.app" target="_blank" rel="noopener">
+                    <span class="proj-name">sorvo.app</span>
+                    <span class="proj-desc" data-i18n="proj_sorvo">An app for rating drinks, not the places serving them</span>
+                    <span class="proj-arrow" aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="sec">
+      <div class="wrap about-grid">
+        <div>
+          <span class="label" style="display:block;margin-bottom:14px" data-i18n="about_label">About</span>
+          <h2 data-i18n="about_h2">I never learned to pick just one.</h2>
+        </div>
+        <div class="about-body">
+          <p data-i18n="about_p1">alejerostudio is the name I put on everything I make: photographs, drawings, identities, websites. It's one person rather than a team, and that's deliberate. The same judgment that decides where to stand for a photo decides where the type goes and how fast the page loads.</p>
+          <p data-i18n="about_p2">Most of what's here I made because I wanted to. The rest was for people who asked. Both get the same attention.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="sec contact">
+      <div class="wrap">
+        <span class="label" style="display:block;margin-bottom:16px" data-i18n="contact_label">Contact</span>
+        <h2 data-i18n="contact_h2">Tell me what you want made.</h2>
+        <p data-i18n="contact_p">Commissions, collaborations, or a question about how something here was done. Email reaches me fastest.</p>
+        <a class="mailto" href="mailto:hello@alejero.studio">hello@alejero.studio</a>
+      </div>
+    </section>
+
+    <!-- FOLLOW -->
+    <section id="follow" class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label" data-i18n="follow_label">Follow</span>
+          <h2 data-i18n="follow_h2">Three accounts, depending on what you're here for.</h2>
+        </div>
+        <div class="socials">
+          <div class="soc">
+            <span class="soc-name" data-i18n="soc_studio">Everything</span>
+            <span class="soc-handle">@alejerostudio</span>
+            <span class="soc-links">
+              <a class="lnk" href="https://www.instagram.com/alejerostudio/" target="_blank" rel="noopener">Instagram<span class="ar" aria-hidden="true">↗</span></a>
+              <a class="lnk" href="https://www.threads.com/@alejerostudio" target="_blank" rel="noopener">Threads<span class="ar" aria-hidden="true">↗</span></a>
+            </span>
+          </div>
+          <div class="soc">
+            <span class="soc-name" data-i18n="soc_photo">Photography only</span>
+            <span class="soc-handle">@alejerophoto</span>
+            <span class="soc-links">
+              <a class="lnk" href="https://www.instagram.com/alejerophoto/" target="_blank" rel="noopener">Instagram<span class="ar" aria-hidden="true">↗</span></a>
+              <a class="lnk" href="https://www.threads.com/@alejerophoto" target="_blank" rel="noopener">Threads<span class="ar" aria-hidden="true">↗</span></a>
+            </span>
+          </div>
+          <div class="soc">
+            <span class="soc-name" data-i18n="soc_illu">Drawings only</span>
+            <span class="soc-handle">@alejerodraw</span>
+            <span class="soc-links">
+              <a class="lnk" href="https://www.instagram.com/alejerodraw/" target="_blank" rel="noopener">Instagram<span class="ar" aria-hidden="true">↗</span></a>
+              <a class="lnk" href="https://www.threads.com/@alejerodraw" target="_blank" rel="noopener">Threads<span class="ar" aria-hidden="true">↗</span></a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
   <footer>
     <div class="wrap">
-      <div class="foot-card reveal">
-        <div class="foot-top">
-          <div class="foot-brand">
-          <img src="assets/alejerostudio-white-logo.png" alt="alejero.studio" />
-          <span class="url">alejero.studio</span>
+      <div class="foot-top">
+        <div class="foot-brand">
+          <img src="assets/alejerostudio-white-logo.png" alt="" width="120" height="120" />
+          <span>alejerostudio</span>
         </div>
-        <div class="foot-social">
-          <a href="https://www.instagram.com/alejerostudio/" target="_blank" rel="noopener" title="alejero.studio on Instagram" aria-label="alejero.studio on Instagram">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://www.threads.com/@alejerostudio" target="_blank" rel="noopener" title="alejero.studio on Threads" aria-label="alejero.studio on Threads">
-            <svg viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
-          </a>
+        <div class="foot-links">
+          <a href="https://www.instagram.com/alejerostudio/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.threads.com/@alejerostudio" target="_blank" rel="noopener">Threads</a>
+          <a href="mailto:hello@alejero.studio" data-i18n="foot_email">Email</a>
         </div>
-        </div>
-        <div class="foot-meta">
-          <div data-i18n="foot_disciplines">Photography · Illustration · Design · Development</div>
-          <div style="margin-top:6px">&copy; <span id="year"></span> alejero.studio · <a href="mailto:hello@alejero.studio">hello@alejero.studio</a></div>
-        </div>
+      </div>
+      <div class="foot-meta">
+        <span data-i18n="foot_disciplines">Photography · Illustration · Design · Development</span>
+        <span>© <span id="year"></span> alejerostudio</span>
       </div>
     </div>
   </footer>
 
 <script>
-  // year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // inline gallery toggles
+  /* ---- expanding sections ---- */
+  var lang = 'en';
   document.querySelectorAll('[data-gallery]').forEach(function(btn){
+    var lbl = btn.querySelector('[data-i18n]');
+    var openKey = lbl.getAttribute('data-i18n');
+    var closeKey = btn.dataset.close;
     btn.addEventListener('click', function(){
-      var g = document.querySelector('.' + btn.dataset.gallery);
-      var open = g.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open);
-      var ar = btn.querySelector('.ar');
-      ar.textContent = open ? '↑' : '↓';
+      var panel = document.getElementById(btn.dataset.gallery);
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.querySelector('.ar').textContent = open ? '↑' : '↓';
+      var key = open ? closeKey : openKey;
+      lbl.setAttribute('data-i18n', key);
+      lbl.textContent = i18n[lang][key];
     });
   });
 
-  // respect reduced-motion: hold the gallery animations still
+  /* ---- hold looping video still when motion is unwelcome ---- */
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('.gallery video').forEach(function(v){ v.removeAttribute('autoplay'); try{ v.pause(); }catch(e){} });
+    document.querySelectorAll('video').forEach(function(v){
+      v.removeAttribute('autoplay');
+      v.setAttribute('controls','');
+      try { v.pause(); } catch(e){}
+    });
   }
 
-  // reveal on scroll
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  }, {threshold:.16});
-  document.querySelectorAll('.reveal, .stagger').forEach(function(el){ io.observe(el); });
-
-  // i18n: EN | ES language toggle (English default)
+  /* ---- EN / ES ---- */
   var i18n = {
     en: {
-      nav_work:"Work", nav_studio:"About", nav_follow:"Follow", nav_cta:"Get in touch",
-      eyebrow:"Creative & development studio",
-      hero_h1a:"Where ideas get ", hero_mark:"made", hero_h1b:", with intention.",
-      lede:"alejero.studio works across photography, illustration, design and development. One studio, four crafts, made to work together.",
-      chip_photo:"Photography", chip_illu:"Illustration", chip_design:"Design", chip_dev:"Development",
-      cta_work:"See the work", cta_project:"Start a project",
-      work_kicker:"The work", work_title:"Four crafts, one studio.",
-      work_sub:"Browse photography and illustration right here, or jump into full design and development projects.",
-      tag_gallery:"Gallery below", tag_project:"Project page",
-      view_gallery:"View gallery", full_portfolio:"Full portfolio", view_projects:"View projects",
-      photo_h3:"Photography", photo_p:"Portraits, products and places. Light, texture and a quiet eye for the moment.",
-      illu_h3:"Illustration", illu_p:"Hand-drawn marks, characters and editorial work with personality and play.",
-      design_h3:"Design", design_p:"Brand systems, layouts and interfaces. Considered, useful, and built to last.",
-      dev_h3:"Development", dev_p:"Sites and small apps that feel as good as they look. From idea to shipped.",
-      tag_projects:"Projects below",
-      proj_alejero_desc:"Personal site", proj_inv_desc:"Digital event invites", proj_sorvo_desc:"Coming soon",
-      contact_kicker:"Get in touch", contact_h2:"Let's make<br>something together.",
-      contact_p:"Commissions, collaborations and curious questions all welcome. Tell me what you have in mind and let's see where it goes.",
-      contact_elsewhere:"Find me elsewhere",
-      social_kicker:"Follow along", social_studio:"The studio", social_divider:"or follow a single craft",
-      social_photo:"Photography", social_illu:"Illustration",
-      about_who:"A studio run<br>on <span class=\"hl\">curiosity</span><br>and craft.",
-      about_p1:"alejero.studio is a multi-disciplinary practice spanning photography, illustration, design and development. The thread through all of it is care: bringing real intention to every project, getting the details right, and keeping a sense of play.",
-      about_p2:"Whether it's a single image, a full brand, or a site built from scratch, the work starts with a real idea and ends with something you're proud to put your name on.",
-      foot_disciplines:"Photography \u00b7 Illustration \u00b7 Design \u00b7 Development",
-      _title:"alejero.studio \u00b7 Photography, illustration, design & development"
+      _title:"alejerostudio · photography, illustration, design, development",
+      nav_work:"Work", nav_about:"About", nav_follow:"Follow", nav_contact:"Contact",
+      hero_h1:"I photograph, draw, design and build.",
+      hero_lede:"Everything on this site is mine. The pictures, the drawings, the layouts and the code. Some of it was commissioned. Most of it started because something looked good and I wanted to keep it.",
+      disc_photo:"Photography", disc_illu:"Illustration", disc_design:"Design", disc_dev:"Development",
+      work_label:"Work", work_h2:"What I make.",
+      work_p:"Photography and illustration open right here. Design and development live on their own sites.",
+      open_gallery:"Open gallery", close_gallery:"Close gallery",
+      open_projects:"Open projects", close_projects:"Close projects",
+      photo_h3:"Photography", photo_count:"6 images",
+      photo_p:"Dogs, cars and coastlines. Bahía de Kino to Midtown, almost always in whatever light was already there.",
+      illu_h3:"Illustration", illu_count:"6 pieces",
+      illu_p:"Fan drawings, mostly. Pokémon, Star Wars, Nintendo and a 1976 Mustang. A couple of them move.",
+      design_h3:"Design",
+      design_p:"Identity, layout and interface. The part where a thing gets decided before it gets made.",
+      dev_h3:"Development", dev_count:"3 projects",
+      dev_p:"Small, fast sites and apps. Every part chosen on purpose, including the parts nobody notices.",
+      proj_alejero:"My own site, and where the design work lives",
+      proj_inv:"Digital invitations, one subdomain per event",
+      proj_sorvo:"An app for rating drinks, not the places serving them",
+      cap_pets_kino:"Pets · Bahía de Kino", cap_pets_home:"Pets · Home", cap_night_ny:"Night · New York",
+      cap_wild_kino:"Wildlife · Bahía de Kino", cap_auto_ny:"Automotive · New York", cap_auto_az:"Automotive · Arizona",
+      about_label:"About", about_h2:"I never learned to pick just one.",
+      about_p1:"alejerostudio is the name I put on everything I make: photographs, drawings, identities, websites. It's one person rather than a team, and that's deliberate. The same judgment that decides where to stand for a photo decides where the type goes and how fast the page loads.",
+      about_p2:"Most of what's here I made because I wanted to. The rest was for people who asked. Both get the same attention.",
+      contact_label:"Contact", contact_h2:"Tell me what you want made.",
+      contact_p:"Commissions, collaborations, or a question about how something here was done. Email reaches me fastest.",
+      follow_label:"Follow", follow_h2:"Three accounts, depending on what you're here for.",
+      soc_studio:"Everything", soc_photo:"Photography only", soc_illu:"Drawings only",
+      foot_email:"Email",
+      foot_disciplines:"Photography · Illustration · Design · Development"
     },
     es: {
-      nav_work:"Trabajo", nav_studio:"Nosotros", nav_follow:"Redes", nav_cta:"Cont\u00e1ctame",
-      eyebrow:"Estudio creativo y de desarrollo",
-      hero_h1a:"Donde las ideas se ", hero_mark:"hacen", hero_h1b:", con intenci\u00f3n.",
-      lede:"alejero.studio trabaja en fotograf\u00eda, ilustraci\u00f3n, dise\u00f1o y desarrollo. Un estudio, cuatro disciplinas, hechas para trabajar juntos.",
-      chip_photo:"Fotograf\u00eda", chip_illu:"Ilustraci\u00f3n", chip_design:"Dise\u00f1o", chip_dev:"Desarrollo",
-      cta_work:"Ver el trabajo", cta_project:"Empezar un proyecto",
-      work_kicker:"El trabajo", work_title:"Cuatro disciplinas, un estudio.",
-      work_sub:"Explora fotograf\u00eda e ilustraci\u00f3n aqu\u00ed mismo, o entra en proyectos completos de dise\u00f1o y desarrollo.",
-      tag_gallery:"Galer\u00eda abajo", tag_project:"Proyectos",
-      view_gallery:"Ver galer\u00eda", full_portfolio:"Portafolio completo", view_projects:"Ver proyectos",
-      photo_h3:"Fotograf\u00eda", photo_p:"Retratos, productos y lugares. Luz, textura y un ojo atento al momento.",
-      illu_h3:"Ilustraci\u00f3n", illu_p:"Trazos a mano, personajes y trabajo editorial con personalidad y juego.",
-      design_h3:"Dise\u00f1o", design_p:"Sistemas de marca, composici\u00f3n e interfaces. Pensados, \u00fatiles y hechos para durar.",
-      dev_h3:"Desarrollo", dev_p:"Sitios y peque\u00f1as apps que se sienten tan bien como se ven. De la idea a publicado.",
-      tag_projects:"Proyectos abajo",
-      proj_alejero_desc:"Sitio personal", proj_inv_desc:"Invitaciones digitales", proj_sorvo_desc:"Pr\u00f3ximamente",
-      contact_kicker:"Cont\u00e1ctame", contact_h2:"Hagamos<br>algo juntos.",
-      contact_p:"Encargos, colaboraciones y preguntas con curiosidad son siempre bienvenidos. Cu\u00e9ntame qu\u00e9 tienes en mente y veamos a d\u00f3nde llega.",
-      contact_elsewhere:"Encu\u00e9ntrame en redes",
-      social_kicker:"S\u00edgueme", social_studio:"El estudio", social_divider:"o sigue una disciplina en particular",
-      social_photo:"Fotograf\u00eda", social_illu:"Ilustraci\u00f3n",
-      about_who:"Un estudio movido<br>por la <span class=\"hl\">curiosidad</span><br>y la dedicaci\u00f3n.",
-      about_p1:"alejero.studio es una pr\u00e1ctica multidisciplinaria que abarca fotograf\u00eda, ilustraci\u00f3n, dise\u00f1o y desarrollo. El hilo que une todo es el cuidado: poner intenci\u00f3n real en cada proyecto, cuidar los detalles y mantener el sentido del juego.",
-      about_p2:"Ya sea una sola imagen, una marca completa o un sitio hecho desde cero, el trabajo empieza con una idea real y termina con algo a lo que te enorgullece poner tu nombre.",
-      foot_disciplines:"Fotograf\u00eda \u00b7 Ilustraci\u00f3n \u00b7 Dise\u00f1o \u00b7 Desarrollo",
-      _title:"alejero.studio \u00b7 Fotograf\u00eda, ilustraci\u00f3n, dise\u00f1o y desarrollo"
+      _title:"alejerostudio · fotografía, ilustración, diseño, desarrollo",
+      nav_work:"Trabajo", nav_about:"Sobre mí", nav_follow:"Redes", nav_contact:"Contacto",
+      hero_h1:"Fotografío, dibujo, diseño y programo.",
+      hero_lede:"Todo lo que hay en este sitio es mío: las fotos, los dibujos, la composición y el código. Algo fue por encargo. La mayoría empezó porque algo se veía bien y quise conservarlo.",
+      disc_photo:"Fotografía", disc_illu:"Ilustración", disc_design:"Diseño", disc_dev:"Desarrollo",
+      work_label:"Trabajo", work_h2:"Lo que hago.",
+      work_p:"Fotografía e ilustración se abren aquí mismo. Diseño y desarrollo viven en sus propios sitios.",
+      open_gallery:"Abrir galería", close_gallery:"Cerrar galería",
+      open_projects:"Abrir proyectos", close_projects:"Cerrar proyectos",
+      photo_h3:"Fotografía", photo_count:"6 imágenes",
+      photo_p:"Perros, coches y costas. De Bahía de Kino a Midtown, casi siempre con la luz que ya estaba ahí.",
+      illu_h3:"Ilustración", illu_count:"6 piezas",
+      illu_p:"Sobre todo fan art: Pokémon, Star Wars, Nintendo y un Mustang del 76. Un par se mueven.",
+      design_h3:"Diseño",
+      design_p:"Identidad, composición e interfaz. La parte donde algo se decide antes de hacerse.",
+      dev_h3:"Desarrollo", dev_count:"3 proyectos",
+      dev_p:"Sitios y apps pequeños y rápidos. Cada parte elegida a propósito, incluidas las que nadie nota.",
+      proj_alejero:"Mi propio sitio, y donde vive el trabajo de diseño",
+      proj_inv:"Invitaciones digitales, un subdominio por evento",
+      proj_sorvo:"Una app para calificar bebidas, no los lugares que las sirven",
+      cap_pets_kino:"Mascotas · Bahía de Kino", cap_pets_home:"Mascotas · Casa", cap_night_ny:"Noche · Nueva York",
+      cap_wild_kino:"Fauna · Bahía de Kino", cap_auto_ny:"Automotriz · Nueva York", cap_auto_az:"Automotriz · Arizona",
+      about_label:"Sobre mí", about_h2:"Nunca aprendí a escoger una sola.",
+      about_p1:"alejerostudio es el nombre que le pongo a todo lo que hago: fotos, dibujos, identidades, sitios web. Es una persona y no un equipo, y es a propósito: el mismo criterio que decide dónde pararme para una foto decide dónde va la tipografía y qué tan rápido carga la página.",
+      about_p2:"Casi todo lo que está aquí lo hice porque quise. El resto fue para quien me lo pidió. Los dos reciben la misma atención.",
+      contact_label:"Contacto", contact_h2:"Dime qué quieres que haga.",
+      contact_p:"Encargos, colaboraciones o una duda sobre cómo se hizo algo de aquí. El correo es lo más rápido.",
+      follow_label:"Redes", follow_h2:"Tres cuentas, según a qué vengas.",
+      soc_studio:"Todo", soc_photo:"Solo fotografía", soc_illu:"Solo dibujos",
+      foot_email:"Correo",
+      foot_disciplines:"Fotografía · Ilustración · Diseño · Desarrollo"
     }
   };
-  function applyLang(lang){
-    var dict = i18n[lang]; if(!dict){ return; }
+
+  function applyLang(next){
+    var dict = i18n[next];
+    if(!dict) return;
+    lang = next;
     document.querySelectorAll('[data-i18n]').forEach(function(el){
       var v = dict[el.getAttribute('data-i18n')];
-      if(v==null){ return; }
-      if(v.indexOf('<')>-1){ el.innerHTML = v; } else { el.textContent = v; }
+      if(v != null) el.textContent = v;
     });
     document.documentElement.lang = lang;
-    if(dict._title){ document.title = dict._title; }
-    document.querySelectorAll('.lang-btn').forEach(function(b){
-      b.classList.toggle('active', b.getAttribute('data-lang')===lang);
+    document.title = dict._title;
+    document.querySelectorAll('.lang button').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
+    try { localStorage.setItem('lang', lang); } catch(e){}
   }
-  document.querySelectorAll('.lang-btn').forEach(function(b){
-    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.dataset.lang); });
   });
 
-  // language toggle tucks away on scroll to declutter, returns at the top
-  var langPill = document.querySelector('.lang-fixed');
-  if(langPill){
-    var tuck = function(){ langPill.classList.toggle('tucked', window.scrollY > 40); };
-    window.addEventListener('scroll', tuck, {passive:true});
-    tuck();
-  }
+  (function(){
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch(e){}
+    var pick = saved || ((navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en');
+    if (pick !== 'en') applyLang(pick);
+  })();
 </script>
 </body>
 </html>
-
-<script>
-  (function(){
-    var logo = document.getElementById('heroLogo');
-    if(!logo) return;
-    var base = 'assets/alejerostudio-animated.webp';
-    var replay = function(){ logo.src = base + '?t=' + Date.now(); };
-    replay();                                   // fresh play on every load/refresh
-    window.addEventListener('pageshow', function(e){
-      if(e.persisted) replay();                 // also replay when restored from back/forward cache
-    });
-  })();
-</script>
